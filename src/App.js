@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import GraficosComponent from './components/GraficosComponent'
+import GraficoPie from './components/GraficoPie'
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
         <header className="App-header">
           <h1>prueba</h1>
         </header>
-        <GraficosComponent />
+        <GraficoPie />
       </div>
     );
   }
