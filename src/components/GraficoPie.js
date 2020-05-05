@@ -7,41 +7,23 @@ class GraficoPie extends Component {
         super(props);
         this.chartReference=React.createRef();
       }
+      
       render(){
+      var consulta= ObtenerVariables(this.props.enlace);
 
-        var generoHoy=JSON.parse(ObtenerGeneroHoy());
-        var mujeres =generoHoy.data[0].cantidad_articulos_mujeres;
-        var hombres=generoHoy.data[0].cantidad_articulos_hombres;
-        const state = {
-            labels: ['Cantidad de Mujeres', 'Cantidad de hombres'],
-            datasets: [
-              {
-                label: 'Rainfall',
-                backgroundColor: [
-                  '#00A6B4',
-                  '#6800B4'
-                ],
-                hoverBackgroundColor: [
-                
-                '#003350',
-                '#35014F'
-                ],
-                data: [mujeres, hombres]
-              }
-            ]
-          }
+      
           return(
             <div className="App">
             <header className="App-header">
-              <h1>prueba</h1>
+            
             </header>
             <article className="canvas-container">
             <Pie
-              data={state}
+              data={consulta}
               options={{
                 title:{
                   display:true,
-                  text:'Cantidad de mujeres y hombres el día de hoy',
+                  text:'Porcentajes de hoy',
                   fontSize:20
                 },
                 legend:{
@@ -50,6 +32,7 @@ class GraficoPie extends Component {
                 }
               }}
             />
+           
             </article>
             
           </div>
@@ -61,11 +44,37 @@ class GraficoPie extends Component {
     
 }
 
-function ObtenerGeneroHoy() {
+
+function ObtenerVariables(consulta){
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET',  "https://cors-anywhere.herokuapp.com/" +"https://apicolumnistos.tedic.net/api/fecha_actual",false);
+    httpRequest.open('GET',  "https://cors-anywhere.herokuapp.com/" +consulta,false);
     httpRequest.send();
-    return httpRequest.response;
-  }
+    var generoHoy=JSON.parse(httpRequest.response);
+    var mujeres =generoHoy.data[0].cantidad_articulos_mujeres;
+    var hombres=generoHoy.data[0].cantidad_articulos_hombres;
+    var variable = {
+        labels: ['Cantidad de Mujeres', 'Cantidad de hombres'],
+        datasets: [
+          {
+            label: 'Rainfall',
+            backgroundColor: [
+              '#00A6B4',
+              '#6800B4'
+            ],
+            hoverBackgroundColor: [
+            
+            '#003350',
+            '#35014F'
+            ],
+            data: [mujeres, hombres]
+          }
+        ]
+      }
+      return variable;
+
+
+}
+
+
 
 export default GraficoPie;

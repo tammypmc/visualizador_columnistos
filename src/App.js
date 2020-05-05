@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import './App.css';
-import GraficoPie from './components/GraficoPie'
+import GraficoPie from './components/GraficoPie';
 
 class App extends Component {
 
-  render() {
+  
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>prueba</h1>
-        </header>
-        <GraficoPie />
-      </div>
-    );
-  }
+  render() {
+   return(
+    <div className="app container">
+    <div className="app container">
+    <p className="lead text-center"> Bot Columnistos</p>
+    <GraficoPie
+    enlace="https://apicolumnistos.tedic.net/api/fecha_actual"
+    />
+    <GraficoPie
+    enlace="https://apicolumnistos.tedic.net/api/record_anual"
+    />
+    </div>  
+ </div>
+   )
 
 }
+
+}
+
 
 export default App;
