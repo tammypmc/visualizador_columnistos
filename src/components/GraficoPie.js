@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { Pie} from 'react-chartjs-2';
 import '../App.css';
+
 class GraficoPie extends Component {
 
     constructor(props){
         super(props);
         this.chartReference=React.createRef();
       }
-      
+
       render(){
       var consulta= ObtenerVariables(this.props.enlace);
 
-      
+
           return(
             <div className="App">
             <header className="App-header">
-            
+
             </header>
             <article className="canvas-container">
             <Pie
@@ -32,16 +33,16 @@ class GraficoPie extends Component {
                 }
               }}
             />
-           
+
             </article>
-            
+
           </div>
           );
 
       }
 
 
-    
+
 }
 
 
@@ -62,7 +63,7 @@ function ObtenerVariables(consulta){
               '#6800B4'
             ],
             hoverBackgroundColor: [
-            
+
             '#003350',
             '#35014F'
             ],
