@@ -10,7 +10,7 @@ class GraficoBarra extends Component {
 
       render(){
 
-        var consulta =ObtenerVariables(this.props.enlace);
+        var consulta =ObtenerVariables(this.props.enlace); /*retorna los datos dado el api*/
 
         const options = {
             responsive: true,
@@ -36,7 +36,7 @@ class GraficoBarra extends Component {
             options={{
               title:{
                 display:true,
-                text:'Porcentajes de hoy',
+                text:this.props.titulo,   /* se extrae de de app el titulo del grafico*/
                 fontSize:20
               },
               legend:{
@@ -55,61 +55,68 @@ class GraficoBarra extends Component {
 
 }
 
-
+/*obtiene la consulta, divide en 3 listas el resultado de la consulta entre el nombre del periodico, los meses o semana
+y el porcentaje de cada uno,crea el dataset, le asigna los colores y divide los valores de cada barra */
 function ObtenerVariables(consulta){
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET',  "https://cors-anywhere.herokuapp.com/" +consulta,false);
+    httpRequest.open('GET', consulta,false);  
     httpRequest.send();
-    var generoHoy=JSON.parse(httpRequest.response);
-    var lista =[];
-    var mujer=[];
-    var hombre=[];
+    var periodico=JSON.parse(httpRequest.response);
+    var lista_periodico =[];
+    var valor=[];
+    var llave=[];
 
-    for (var i = 0; i < generoHoy.data.length; i++) {
-          for(var key in generoHoy.data[i]){
-            if(key=="site" || key== "year"){
-              lista.push(generoHoy.data[i][key]);
+    for (var i = 0; i < periodico.data.length; i++) {
+      
+          for(var key in periodico.data[i]){
+            if(key=="site"){
+              lista_periodico.push(periodico.data[i][key]);
               
-            }else if(key=="articulos_mujeres"|| key== "cantidad_articulos_mujeres"){
-              mujer.push(generoHoy.data[i][key]);
+            }else if(llave.includes( key )== false){
+              llave.push(key);
+              valor.push(parseInt(periodico.data[i][key]));
             }else{
-              hombre.push(generoHoy.data[i][key]);
+              valor.push(parseInt (periodico.data[i][key]));
             }
           }
     }
 
-    var variables = {
-        data: {
-          labels: lista,
-          datasets: [
-            {
-              label: "Cantidad de Mujeres",
-              backgroundColor: "rgba(255,99,132,0.2)",
-              borderColor: "rgba(255,99,132,1)",
-              borderWidth: 1,
-              hoverBackgroundColor: "rgba(255,99,132,0.4)",
-              hoverBorderColor: "rgba(255,99,132,1)",
-              data: mujer
-            },
-  
-            {
-              label: "Cantidad de Hombres",
-              backgroundColor: "rgba(155,231,91,0.2)",
-              borderColor: "rgba(255,99,132,1)",
-              borderWidth: 1,
-              hoverBackgroundColor: "rgba(255,99,132,0.4)",
-              hoverBorderColor: "rgba(255,99,132,1)",
-              data: hombre
-            }
-          ]
-        }
-      };
+    var nuevo={   
+      data:{
+        labels:llave,
+        datasets:[]
+      }
+    }
 
 
+    var valor_por_periodico=0;
+    var color=0;
+    const COLORS = ['#CE796B','#C18C5D','#495867','#A2C3A4','#C4F1BE']
+    for (var i = 0; i < lista_periodico.length; i++) {
+      
+      var lista_data=[]
+      for(var j = 0; j < llave.length; j++){
+      lista_data.push(valor[valor_por_periodico]);
+      
+      valor_por_periodico ++;
 
-      return variables;
+        
+      }
+     
+      nuevo.data.datasets[i] = {
+        label: lista_periodico[i],
+        backgroundColor: COLORS[color],
+        borderColor: COLORS[color],
+        borderWidth: 1,
+        hoverBackgroundColor: COLORS[color],
+        hoverBorderColor: COLORS[color],
+        data:lista_data
+      }
+      color ++;
+    }   
+
+      return nuevo;
 }
-
 
 
 export default GraficoBarra;

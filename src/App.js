@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GraficoPie from './components/GraficoPie';
+
 import GraficoBarra from './components/GraficoBarra';
 
 class App extends Component {
@@ -10,42 +10,10 @@ class App extends Component {
    return(
     <div className="app container">
     <div className="app container">
-    <p className="lead text-center"> Bot Columnistos</p>
-
-    <GraficoPie
-    enlace="https://apicolumnistos.tedic.net/api/historico_genero"
-    />
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
-    <GraficoPie
-    enlace="https://apicolumnistos.tedic.net/api/fecha_actual"
-    />
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
- <br/>
+  
     <GraficoBarra
-    enlace="https://apicolumnistos.tedic.net/api/periodicos"
+    enlace="https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/2020-05-04/2020-05-10"
+    titulo="¿Cómo se distribuye por día de la semana por medio?"
     />
  <br/>
  <br/>
@@ -63,7 +31,8 @@ class App extends Component {
  <br/>
 
     <GraficoBarra
-    enlace="https://apicolumnistos.tedic.net/api/record_anual"
+    enlace="https://apicolumnistos.tedic.net/api/distribucion_mes_anio/2019"
+    titulo="¿Cómo se distribuyen por mes por medio?"
     />
 
     </div>  
