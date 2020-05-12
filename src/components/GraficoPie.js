@@ -14,10 +14,7 @@ class GraficoPie extends Component {
 
 
           return(
-            <div className="App">
-            <header className="App-header">
 
-            </header>
             <article className="canvas-container">
             <Pie
               data={consulta}
@@ -36,7 +33,6 @@ class GraficoPie extends Component {
 
             </article>
 
-          </div>
           );
 
       }

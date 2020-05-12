@@ -2,7 +2,34 @@
   text-align: center;
 }
 
-
 .canvas-container {
   height: 60vh;
+}
+
+.navbar-custom {
+  background-color: #F1F1F1;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand {
+  color: #707070;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: #000000;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
 }
