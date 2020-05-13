@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import CanvasJSReact from './canvasjs.react';
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
- 
+import html2canvas from "html2canvas";
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+var CanvasJSChart = CanvasJSReact.CanvasJSChart; 
+
+
 class Stepline extends Component {
+
+
+	descargarImagen(id){
+		domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
+		.then(function(blob) {
+		  window.saveAs(blob, 'my-node.png');
+		});
+	  }
+
+	
+
 	render() {
 
 		var consulta=ObtenerVariables(this.props.enlace);
@@ -25,15 +40,28 @@ class Stepline extends Component {
 				dataPoints: consulta
 			}]
 		}
-		
+
+
 		return (
-		<div>
+			<div >
+				<div className={this.props.id}>
+					<div>
+					<CanvasJSChart options = {options} 
+					/>
+					</div>
 			
-			<CanvasJSChart options = {options} 
-				
-			/>
-			
+				</div>
+
+				<div>
+				<button onClick={() => console.log("ici") || this.descargarImagen(this.props.id)}>
+		  Descargar png
+		</button>
+	  </div>
 		</div>
+		
+		
+		
+	
 		);
 	}
 }
