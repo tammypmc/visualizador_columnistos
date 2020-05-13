@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import GraficoBarra from './components/GraficoBarra';
 import Stepline from './components/Stepline';
+import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 class App extends Component {
 
   
@@ -52,6 +53,17 @@ class App extends Component {
 <Stepline
  enlace=" https://apicolumnistos.tedic.net/api/distribucion_semana_anio/2019"
  titulo= "¿Cómo se distribuye por semana?"
+/>
+<br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+
+ <GraficoDiasSinMujeres
+ enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres"
+ titulo= "Dias sin mujeres"
 />
 
     </div>  
