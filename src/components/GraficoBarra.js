@@ -12,17 +12,7 @@ class GraficoBarra extends Component {
 
         var consulta =ObtenerVariables(this.props.enlace); /*retorna los datos dado el api*/
 
-        const options = {
-            responsive: true,
-            legend: {
-              display: false
-            },
-            type: "bar"
-         
-          };
-
-
-
+    
         return(
             <div className="App">
             <header className="App-header">
@@ -66,17 +56,17 @@ function ObtenerVariables(consulta){
     var valor=[];
     var llave=[];
 
-    for (var i = 0; i < periodico.data.length; i++) {
+    for (var y = 0; y < periodico.data.length; y++) {
       
-          for(var key in periodico.data[i]){
-            if(key=="site"){
-              lista_periodico.push(periodico.data[i][key]);
+          for(var key in periodico.data[y]){
+            if(key==="site"){
+              lista_periodico.push(periodico.data[y][key]);
               
-            }else if(llave.includes( key )== false){
+            }else if(llave.includes( key )=== false){
               llave.push(key);
-              valor.push(parseInt(periodico.data[i][key]));
+              valor.push(parseInt(periodico.data[y][key]));
             }else{
-              valor.push(parseInt (periodico.data[i][key]));
+              valor.push(parseInt (periodico.data[y][key]));
             }
           }
     }

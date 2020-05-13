@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import GraficoBarra from './components/GraficoBarra';
-
+import Stepline from './components/Stepline';
 class App extends Component {
 
   
@@ -34,6 +34,25 @@ class App extends Component {
     enlace="https://apicolumnistos.tedic.net/api/distribucion_mes_anio/2019"
     titulo="¿Cómo se distribuyen por mes por medio?"
     />
+
+<br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+<Stepline
+ enlace=" https://apicolumnistos.tedic.net/api/distribucion_semana_anio/2019"
+ titulo= "¿Cómo se distribuye por semana?"
+/>
 
     </div>  
  </div>
