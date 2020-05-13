@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
+
+/* para llamar esta clase por mes
+<GraficoBarra
+    id="mes"
+    enlace="https://apicolumnistos.tedic.net/api/distribucion_mes_anio/2019"
+    titulo="¿Cómo se distribuyen por mes por medio?"
+/>
+*/
+/*para llamar esta clase por semana
+      <GraficoBarra
+                  id="semana"
+              enlace="https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/2020-05-04/2020-05-10"
+              titulo="¿Cómo se distribuye por día de la semana por medio?"
+              />
+*/
 class GraficoBarra extends Component {
 
     constructor(props){
@@ -18,7 +33,6 @@ class GraficoBarra extends Component {
             <header className="App-header">
             
             </header>
-            <article className="canvas-container">
             <Bar
             data={consulta.data}
             width={null}
@@ -35,8 +49,6 @@ class GraficoBarra extends Component {
               }
             }}
           />
-           
-            </article>
             
           </div>
           );

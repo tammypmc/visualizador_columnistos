@@ -17,7 +17,6 @@ class GraficoPie extends Component {
             <header className="App-header">
             
             </header>
-            <article className="canvas-container">
             <Pie
               data={consulta}
               options={{
@@ -32,9 +31,6 @@ class GraficoPie extends Component {
                 }
               }}
             />
-           
-            </article>
-            
           </div>
           );
 
@@ -47,7 +43,7 @@ class GraficoPie extends Component {
 
 function ObtenerVariables(consulta){
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET',  "https://cors-anywhere.herokuapp.com/" +consulta,false);
+    httpRequest.open('GET',  consulta,false);
     httpRequest.send();
     var generoHoy=JSON.parse(httpRequest.response);
     var mujeres =generoHoy.data[0].cantidad_articulos_mujeres;

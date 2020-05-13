@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 import '../App.css';
 
+/* para llamar esta clase
+         <GraficoDiasSinMujeres
+         enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres"
+         titulo= "Dias sin mujeres"
+         />
+*/
 class GraficoDiasSinMujeres extends Component{
     constructor(props){
         super(props);
@@ -28,7 +34,8 @@ class GraficoDiasSinMujeres extends Component{
             scales: {
                 xAxes: [{
                   gridLines: {
-                    drawOnChartArea: false
+                    drawOnChartArea: false,
+                    categorySpacing: 0
                   },
                   ticks: {
                     beginAtZero: true,
