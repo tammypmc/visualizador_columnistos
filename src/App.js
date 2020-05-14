@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
-import GraficoPie from './components/GraficoPie';
+import GeneralInformation from './components/GeneralInformation';
 import Navbar from './components/Navbar';
+//import DropdownDates from './components/DropdownDates';
+import GraficoPie from './components/GraficoPie';
+import InfoColumnistos from './components/InfoColumnistos';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-//import GeneralInformation from'./components/GeneralInformation';
 
 class App extends Component {
 
   render() {
-    return (<div className="container-fluid p-0" >
+    return (<div className="container-fluid  p-0">
+
       <Navbar></Navbar>
-
-      <GraficoPie enlace="https://apicolumnistos.tedic.net/api/historico_genero"/>
-      <GraficoPie enlace="https://apicolumnistos.tedic.net/api/historico_genero"/>
-      <GraficoPie enlace="https://apicolumnistos.tedic.net/api/historico_genero"/>
-
+      <InfoColumnistos/>
+      <GeneralInformation enlace1="https://apicolumnistos.tedic.net/api/cantidad_articulos" enlace2="https://apicolumnistos.tedic.net/api/total_autores" enlace3="https://apicolumnistos.tedic.net/api/cantidad_meses" enlace4="https://apicolumnistos.tedic.net/api/cantidad_medios"/>
 
 
 

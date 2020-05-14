@@ -10,6 +10,10 @@
   background-color: #F1F1F1;
 }
 
+.navbar .container, .navbar .container-fluid, .navbar .container-lg, .navbar .container-md, .navbar .container-sm, .navbar .container-xl {
+  display: block !important;
+}
+
 /* change the brand and text color */
 .navbar-custom .navbar-brand {
   color: #707070;
@@ -28,8 +32,81 @@
   font-weight: 700;
 }
 
+.navbar-nav .dropdown-menu {
+  position: fixed !important;
+}
+
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-  color: #ffffff;
+  color: ##A54C78;
 }
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(165, 76, 120, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler .navbar-toggler:focus, .custom-toggler .navbar-toggler:hover {
+  border: 0px;
+}
+
+.btn-secondary, .btn-secondary:visited {
+  color: #3B86FF !important;
+  background-color: transparent !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 700 !important;
+  border: 0px !important;
+}
+
+.btn-secondary:hover, .btn-secondary:active {
+  color: #707070 !important;
+  background-color: transparent !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 700 !important;
+  border: 0px !important;
+}
+
+.btn:focus, .btn:active {
+  color: #707070 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+hr {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+h1 {
+  color: #707070 !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 500 !important;
+}
+
+h3 {
+  color: #707070 !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 500 !important;
+}
+
+h6{
+  color: #707070 !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 500 !important;
+}
+font-family: 'Montserrat';
+font-style: normal;
+font-display: swap;
+font-weight: 500;
