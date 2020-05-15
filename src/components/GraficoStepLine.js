@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CanvasJSReact from './canvasjs.react';
 import html2canvas from "html2canvas";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
@@ -52,8 +51,7 @@ class GraficoStepLine extends Component {
             }
             
         }
-        console.log(semana);
-        console.log(porcentaje);
+
         const myChartRef = this.chartRef.current.getContext("2d");
         const { data, average, labels } = this.props;
 
