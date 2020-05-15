@@ -3,6 +3,7 @@ import GeneralInformation from './components/GeneralInformation';
 import Navbar from './components/Navbar';
 //import DropdownDates from './components/DropdownDates';
 import GraficoBarra from './components/GraficoBarra';
+import GraficoBarraSemana from './components/GraficoBarraSemana';
 import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
@@ -20,6 +21,12 @@ class App extends Component {
       <GeneralInformation enlace1="https://apicolumnistos.tedic.net/api/cantidad_articulos" enlace2="https://apicolumnistos.tedic.net/api/total_autores" enlace3="https://apicolumnistos.tedic.net/api/cantidad_meses" enlace4="https://apicolumnistos.tedic.net/api/cantidad_medios"/>
 
       <div class="container w-100">
+
+        <div class="row  m-5">
+          <div class="shadow w-100 p-3 bg-white">
+            <GraficoBarraSemana enlace="https://apicolumnistos.tedic.net/api/distribucion_semana_rango/2020-05-04/2020-05-10" titulo="¿Cómo se distribuyen por dia de la semana?"/>
+          </div>
+        </div>
 
         <div class="row  m-5">
           <div class="shadow w-100 p-3 bg-white">
@@ -44,7 +51,7 @@ class App extends Component {
         <div className="row  m-5">
           <div className="col-md-6 offset-md-3">
             <div className="shadow p-3 bg-white ">
-              <GraficoDiasSinMujeres id="GraficoDiasSinMujeres" enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres" titulo="Dias sin mujeres"/>
+              <GraficoDiasSinMujeres enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres" titulo="Días sin mujeres"/>
             </div>
           </div>
         </div>
