@@ -8,6 +8,7 @@ class Navbar extends Component {
   state = {
     slide: '-60px', // How much should the Navbar slide up or down
     lastScrollY: 0, // Keep track of current position in state
+    message: ""
   };
 
   componentWillMount() {
@@ -33,6 +34,12 @@ class Navbar extends Component {
     this.setState({lastScrollY: currentScrollY});
   };
 
+
+
+callbackFunction = (childData) => {
+      this.setState({message: childData})
+};
+
   render() {
     return (<nav className="navbar sticky-top navbar-expand-lg navbar-custom " style={{
         transform: `translate(0, ${this.state.slide})`,
@@ -50,10 +57,12 @@ class Navbar extends Component {
               Fecha
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <DropdownDates/>
+              <DropdownDates message={this.state.message}/>
+             
 
 
             </div>
+            <p> {this.state.message} </p>
           </li>
 
         </ul>

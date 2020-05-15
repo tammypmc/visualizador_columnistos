@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import '../App.css';
 import '../customCalendar.css';
 
+
 class DropdownDates extends Component {
 
   constructor(props) {
@@ -14,13 +15,18 @@ class DropdownDates extends Component {
    onChange = date => {
      console.log(date);
      this.setState({ date })
+     
 
  };
 
 
 
+
   render() {
-    return (<div className="container">
+   
+
+    return (
+    <div className="container">
 
       <div className="row pl-2">
 
@@ -58,12 +64,19 @@ class DropdownDates extends Component {
             selectRange = "true"
             defaultView = "month"
             locale = "es-419"
+            
 
 
           />
 
       </div>
-    </div>);
+      
+      
+    </div>
+    
+
+        
+    );
   }
 }
 export default DropdownDates;

@@ -3,9 +3,10 @@ import GeneralInformation from './components/GeneralInformation';
 import Navbar from './components/Navbar';
 //import DropdownDates from './components/DropdownDates';
 import GraficoBarra from './components/GraficoBarra';
-import Stepline from './components/Stepline';
-import InfoColumnistos from './components/InfoColumnistos';
 import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
+import GraficoStepLine from './components/GraficoStepLine';
+import InfoColumnistos from './components/InfoColumnistos';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -24,45 +25,60 @@ class App extends Component {
       <br/>
       <br/>
       <br/>
-      <div className="container-fluid p-0">
-    
+      <div class="container">
 
-   
-      <div className="container-fluid p-0">
-         <div class="d-flex flex-column justify-content-center">   
-            <div class="shadow w-50 p-3 mb-5 bg-white rounded">
-               <GraficoBarra
+        <div class="row  m-5">
+          <div class="col-md-6 offset-md-3">
+            <div class="shadow p-1 bg-white ">
+            <GraficoBarra
             id="mes"
             enlace="https://apicolumnistos.tedic.net/api/distribucion_mes_anio/2019"
             titulo="¿Cómo se distribuyen por mes por medio?"
             />
-                  
-            </div>  
-            <div class="shadow w-50 p-3 mb-5 bg-white rounded">
+            </div>
+            
+          </div>
+        </div>
+        <div class="row  m-5">
+          <div class="col-md-6 offset-md-3">
+            <div class="shadow p-1 bg-white ">
             <GraficoBarra
                 id="semana"
             enlace="https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/2020-05-04/2020-05-10"
             titulo="¿Cómo se distribuye por día de la semana por medio?"
             />
             </div>
-            <div class="shadow w-50 p-3 mb-5 bg-white rounded">      
-            <Stepline
-        id="Stepline"
-        enlace=" https://apicolumnistos.tedic.net/api/distribucion_semana_anio/2019"
-        titulo= "¿Cómo se distribuye por semana?"
-        />
+            
+          </div>
+        </div>
+        <div class="row  m-5">
+          <div class="col-md-6 offset-md-3">
+            <div class="shadow p-1 bg-white ">
+            
+
+            <GraficoStepLine
+        enlace ="https://apicolumnistos.tedic.net/api/distribucion_semana_anio/2019"
+        id="GraficoStepLine" />
+        
+
             </div>
-            <div class="shadow w-50 p-3 mb-5 bg-white rounded">
+            
+          </div>
+        </div>
+        <div class="row  m-5">
+          <div class="col-md-6 offset-md-3">
+            <div class="shadow p-1 bg-white ">
             <GraficoDiasSinMujeres
             id="GraficoDiasSinMujeres"
             enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres"
             titulo= "Dias sin mujeres"
             />
             </div>
-         </div>
-   </div>
-   </div>
-
+            
+          </div>
+        </div>
+       
+      </div>
     </div>)
 
   }
