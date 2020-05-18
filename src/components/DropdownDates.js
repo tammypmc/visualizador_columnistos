@@ -14,7 +14,7 @@ class DropdownDates extends Component {
 
 
   /* envia al componente navbar el rango de fechas*/
-   onChange = date => { 
+   onChange = date => {
       this.props.obtenerFecha(date);
 
  };
@@ -28,11 +28,11 @@ class DropdownDates extends Component {
 
 
   render() {
-   
-    var listaAnios = ObtenerVariables();
+
+    var listaAnios = ObtenerVariables(this.props.enlaceAnios);
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
-      items.push(<button type="button" id={listaAnios[i]} class="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId}>{listaAnios[i]}</button>)
+      items.push(<button type="button" class="btn btn-secondary btn-secondary-custom py-0 ">{listaAnios[i]}</button>)
     }
     return (
     <div className="container">
@@ -71,21 +71,21 @@ class DropdownDates extends Component {
             selectRange = "true"
             defaultView = "month"
             locale = "es-419"
-            
+
 
 
           />
 
       </div>
     </div>
-        
+
     );
   }
 }
 
-function ObtenerVariables(){
+function ObtenerVariables(enlace){
   var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', 'https://apicolumnistos.tedic.net/api/anios_disponibles',false);
+  httpRequest.open('GET', enlace,false);
   httpRequest.send();
   var cons =JSON.parse(httpRequest.response);
   var listaAnios = [];

@@ -10,14 +10,14 @@ class GraficoBarraSemana extends Component{
         this.chartReference=React.createRef();
       }
 
-      
+
     descargarImagen(id){
       domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
       .then(function(blob) {
         window.saveAs(blob, id+'.png');
       });
     }
-      
+
 
       render(){
         var datos = ObtenerVariables(this.props.enlace);
@@ -52,12 +52,16 @@ class GraficoBarraSemana extends Component{
                   gridLines: {
                     drawOnChartArea: false,
                     categorySpacing: 0
-                  }
+                  },
+                  stacked: true
                 }],
                 yAxes: [{
+                  display: false,
                   gridLines: {
+                    display: false,
                     drawOnChartArea: false
                   },
+                  stacked: true,
                   ticks: {
                     beginAtZero: true,
                     stepSize: 10,
@@ -138,10 +142,15 @@ function ObtenerVariables(consulta){
             {
             label: "Porcentaje",
             backgroundColor: 'rgba(165, 76, 120, 1)',
-            pointBackgroundColor: "rgba(107,200,213,1)",
             barThickness: 50,
-            data: [datos_final[0].numero, datos_final[1].numero, datos_final[2].numero, datos_final[3].numero, datos_final[4].numero, datos_final[5].numero, datos_final[6].numero]
+            data: [datos_final[0].numero.toFixed(2), datos_final[1].numero.toFixed(2), datos_final[2].numero.toFixed(2), datos_final[3].numero.toFixed(2), datos_final[4].numero.toFixed(2), datos_final[5].numero.toFixed(2), datos_final[6].numero.toFixed(2)]
             },
+            {
+            label: "Porcentaje",
+            backgroundColor: 'rgba(220, 221, 222, 1)',
+            barThickness: 50,
+            data: [100,100,100,100,100,100, 100]
+            }
         ]
         };
     return data;

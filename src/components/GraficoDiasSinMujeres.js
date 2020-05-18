@@ -25,16 +25,23 @@ class GraficoDiasSinMujeres extends Component{
       }
 
       render(){
-        var datos = ObtenerVariables(this.props.enlace);
+        var listaEnlaces = [];
+        var enlace = this.props.enlaceMedio;
+        for(var i=0; i<this.props.listaMedios.length; i++){
+          listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
+        }
+        console.log(listaEnlaces);
+        var datos = ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
+        var dias = ObtenerDias(this.props.enlaceDias);
         var identificador =this.props.id;
         return (
             <div className="App">
             <header className="App-header">
-            
+
             </header>
             <div className= {identificador}>
-        <HorizontalBar 
-        data={datos} 
+        <HorizontalBar
+        data={datos}
         options= {{
           events: [],
             title:{
@@ -54,22 +61,25 @@ class GraficoDiasSinMujeres extends Component{
             },
             scales: {
                 xAxes: [{
+                  display: false,
                   gridLines: {
+                    display: false,
                     drawOnChartArea: false,
                     categorySpacing: 0
                   },
                   ticks: {
                     beginAtZero: true,
                     stepSize: 50,
-                    max: 777
+                    max: dias
                   }
                 }],
                 yAxes: [{
+                  scaleShowLabels: false,
                   gridLines: {
                     drawOnChartArea: false
                   }
                 }]
-              }      
+              }
         }}/>
 
         </div>
@@ -77,32 +87,56 @@ class GraficoDiasSinMujeres extends Component{
                   <i class="icon ion-md-arrow-down"></i> <span class="spn">Descargar</span>
             </button>
 
-            
+
             </div>
           );
       }
 
 }
-function ObtenerVariables(consulta){
+function ObtenerVariables(consulta, listaEnlaces, listaMedios){
+    var dias = []
     var httpRequest = new XMLHttpRequest();
+
+
+    for(var i=0; i<listaEnlaces.length; i++){
+      httpRequest.open('GET',  listaEnlaces[i],false);
+      httpRequest.send();
+      var cons =JSON.parse(httpRequest.response);
+      dias.push(cons.data[0].dias_sin_mujeres);
+    }
+
     httpRequest.open('GET',  consulta,false);
     httpRequest.send();
     var cons =JSON.parse(httpRequest.response);
-    var dias = cons.data[0].dias_sin_mujeres;
-    
+    dias.push(cons.data[0].dias_sin_mujeres);
+
+    var titulos = listaMedios.concat("Total de días");
     const data = {
-        labels:["Total de días"],
+        labels: titulos,
         datasets: [
           {
             label: 'Total de días: ',
             backgroundColor: 'rgba(165, 76, 120, 1)',
-            barThickness: 25,
-            data: [dias]
+            barThickness: 15,
+            data: dias
           }
         ]
       };
 
     return data;
+
+
+}
+
+function ObtenerDias(consulta){
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET',  consulta,false);
+  httpRequest.send();
+  var cons =JSON.parse(httpRequest.response);
+  var dias = cons.data[0].dias_disponibles;
+
+
+  return dias;
 
 
 }

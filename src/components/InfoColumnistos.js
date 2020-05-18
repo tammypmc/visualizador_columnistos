@@ -8,14 +8,14 @@ class InfoColumnistos extends Component {
     //console.log(e.target.id);
     //console.log(e.currentTarget.id);
   }
-  
+
 
   render() {
 
-    var listaAnios = ObtenerVariables();
+    var listaAnios = ObtenerVariables(this.props.enlaceAnios);
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
-      items.push(<button className="dropdown-item" id={listaAnios[i]} type="button"  onClick={this.handleId}>{listaAnios[i]}</button>);
+      items.push(<button className="dropdown-item" type="button">{listaAnios[i]}</button>);
     }
 
     return (
@@ -49,9 +49,9 @@ class InfoColumnistos extends Component {
   }
 }
 
-function ObtenerVariables(){
+function ObtenerVariables(consulta){
   var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', 'https://apicolumnistos.tedic.net/api/anios_disponibles',false);
+  httpRequest.open('GET', consulta,false);
   httpRequest.send();
   var cons =JSON.parse(httpRequest.response);
   var listaAnios = [];
