@@ -72,7 +72,7 @@ function ObtenerVariables(consulta){
     var datos = cons.data;
     //console.log(datos);
 
-    var listaDias = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    var listaDias = ["Domingo","Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
     var lis = [];
 
     for (var i=0; i<datos.length; i++){;

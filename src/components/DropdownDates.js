@@ -12,9 +12,9 @@ class DropdownDates extends Component {
     this.state = {date: new Date()};
   }
 
-   onChange = date => {
+   onChange = date => { /* envia al componente navbar el rango de fechas*/
      console.log(date);
-     this.setState({ date })
+      this.props.obtenerFecha(date);
      
 
  };
