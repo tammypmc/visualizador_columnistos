@@ -8,7 +8,8 @@ class Navbar extends Component {
   state = {
     slide: '-60px', // How much should the Navbar slide up or down
     lastScrollY: 0, // Keep track of current position in state
-    date: ""
+    date: "",
+    year:""
   };
 
   componentWillMount() {
@@ -47,6 +48,11 @@ handleDate = (Date) => {        /*envia a app.js el rango de fechas seleccionada
   this.props.seleccionFecha(Date);
 }
 
+handleYear = (Year) => {        /*envia a app.js el rango de fechas seleccionadas */
+  this.setState({year: Year});
+  this.props.seleccionAnio(Year);
+}
+
   render() {
     return (<nav className="navbar sticky-top navbar-expand-lg navbar-custom " style={{
         transform: `translate(0, ${this.state.slide})`,
@@ -64,7 +70,7 @@ handleDate = (Date) => {        /*envia a app.js el rango de fechas seleccionada
               Fecha
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <DropdownDates obtenerFecha={this.handleDate}/>
+              <DropdownDates obtenerFecha={this.handleDate}  obtenerAnio={this.handleYear}/>
              
 
 

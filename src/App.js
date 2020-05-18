@@ -17,7 +17,7 @@ constructor(props){
     this.state = {
       primerFecha:"2020-05-04",
       segundaFecha:"2020-05-10",
-      anio:""
+      anio:"2020"
     };
   }
 
@@ -29,15 +29,20 @@ constructor(props){
     this.setState({primerFecha: fecha1});
     this.setState({segundaFecha: fecha2});
   }
+  manejoDeAnio=(anio_dropdown) =>{
+    console.log(anio_dropdown);
+    this.setState({anio: anio_dropdown});
+  }
   
 
   render() {
-  	var graficoSemanaPeriodico="https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/"+this.state.primerFecha+"/"+this.state.segundaFecha;
-    var graficoSemana= "https://apicolumnistos.tedic.net/api/distribucion_semana_rango/"+this.state.primerFecha+"/"+this.state.segundaFecha;
-   
+  	var graficoSemanaPeriodico="https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/"+ this.state.primerFecha+"/"+this.state.segundaFecha;
+    var graficoSemana= "https://apicolumnistos.tedic.net/api/distribucion_semana_rango/"+ this.state.primerFecha+"/"+this.state.segundaFecha;
+    var distribucionMesAnio= "https://apicolumnistos.tedic.net/api/distribucion_mes_anio/"+ this.state.anio;
+    var distribucionSemanaAnio= "https://apicolumnistos.tedic.net/api/distribucion_semana_anio/"+this.state.anio;
     return (<div className="container-fluid  p-0">
 
-      <Navbar seleccionFecha={this.manejoDeFechas}></Navbar>
+      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio}></Navbar>
       <InfoColumnistos/>
 
       <GeneralInformation enlace1="https://apicolumnistos.tedic.net/api/cantidad_articulos" enlace2="https://apicolumnistos.tedic.net/api/total_autores" enlace3="https://apicolumnistos.tedic.net/api/cantidad_meses" enlace4="https://apicolumnistos.tedic.net/api/cantidad_medios"/>
@@ -58,13 +63,13 @@ constructor(props){
 
         <div class="row  m-5">
           <div class="shadow w-100 p-3 bg-white">
-            <GraficoBarra id="mes" enlace="https://apicolumnistos.tedic.net/api/distribucion_mes_anio/2019" titulo="¿Cómo se distribuyen por mes por medio?"/>
+            <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por medio?"/>
           </div>
         </div>
      
         <div class="row  m-5">
           <div class="shadow w-100 p-3 bg-white">
-            <GraficoStepLine enlace="https://apicolumnistos.tedic.net/api/distribucion_semana_anio/2019" id="GraficoStepLine"/>
+            <GraficoStepLine enlace={distribucionSemanaAnio} id="GraficoStepLine"/>
 
           </div>
         </div>

@@ -12,14 +12,19 @@ class DropdownDates extends Component {
     this.state = {date: new Date()};
   }
 
-   onChange = date => { /* envia al componente navbar el rango de fechas*/
-     console.log(date);
+
+  /* envia al componente navbar el rango de fechas*/
+   onChange = date => { 
       this.props.obtenerFecha(date);
-     
 
  };
 
 
+ handleId = (e) => {
+  this.props.obtenerAnio(e.target.id);
+  //console.log(e.target.id);
+  //console.log(e.currentTarget.id);
+}
 
 
   render() {
@@ -27,7 +32,7 @@ class DropdownDates extends Component {
     var listaAnios = ObtenerVariables();
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
-      items.push(<button type="button" class="btn btn-secondary btn-secondary-custom py-0 ">{listaAnios[i]}</button>)
+      items.push(<button type="button" id={listaAnios[i]} class="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId}>{listaAnios[i]}</button>)
     }
     return (
     <div className="container">
