@@ -24,7 +24,11 @@ class DropdownDates extends Component {
 
   render() {
    
-
+    var listaAnios = ObtenerVariables();
+    var items = [];
+    for (var i=0; i<listaAnios.length; i++){
+      items.push(<button type="button" class="btn btn-secondary btn-secondary-custom py-0 ">{listaAnios[i]}</button>)
+    }
     return (
     <div className="container">
 
@@ -38,9 +42,7 @@ class DropdownDates extends Component {
 
       <div className="row pl-2">
         <div className="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-secondary btn-secondary-custom py-0 ">2017</button>
-          <button type="button" class="btn btn-secondary btn-secondary-custom py-0">2018</button>
-          <button type="button" class="btn btn-secondary btn-secondary-custom py-0">2019</button>
+          {items}
         </div>
 
       </div>
@@ -70,13 +72,23 @@ class DropdownDates extends Component {
           />
 
       </div>
-      
-      
     </div>
-    
-
         
     );
   }
 }
+
+function ObtenerVariables(){
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'https://apicolumnistos.tedic.net/api/anios_disponibles',false);
+  httpRequest.send();
+  var cons =JSON.parse(httpRequest.response);
+  var listaAnios = [];
+  for (var i=0; i<cons.data.length; i++){
+      listaAnios.push(cons.data[i].anios);
+  }
+
+  return listaAnios;
+}
+
 export default DropdownDates;

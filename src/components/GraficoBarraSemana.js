@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
-import GraficoBarra from './GraficoBarra';
 
 class GraficoBarraSemana extends Component{
 
@@ -125,7 +124,8 @@ function ObtenerVariables(consulta){
             {
             label: "Porcentaje",
             backgroundColor: 'rgba(165, 76, 120, 1)',
-            barThickness: 30,
+            pointBackgroundColor: "rgba(107,200,213,1)",
+            barThickness: 50,
             data: [datos_final[0].numero, datos_final[1].numero, datos_final[2].numero, datos_final[3].numero, datos_final[4].numero, datos_final[5].numero, datos_final[6].numero]
             },
         ]
