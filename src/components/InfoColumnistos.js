@@ -4,6 +4,13 @@ class InfoColumnistos extends Component {
 
 
   render() {
+
+    var listaAnios = ObtenerVariables();
+    var items = [];
+    for (var i=0; i<listaAnios.length; i++){
+      items.push(<button className="dropdown-item" type="button">{listaAnios[i]}</button>);
+    }
+
     return (
 
   <div className="container">
@@ -18,9 +25,7 @@ class InfoColumnistos extends Component {
             2020
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button className="dropdown-item" type="button">2019</button>
-            <button className="dropdown-item" type="button">2018</button>
-            <button className="dropdown-item" type="button">2017</button>
+            {items}
           </div>
         </div>
 
@@ -36,4 +41,19 @@ class InfoColumnistos extends Component {
     );
   }
 }
+
+function ObtenerVariables(){
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', 'https://apicolumnistos.tedic.net/api/anios_disponibles',false);
+  httpRequest.send();
+  var cons =JSON.parse(httpRequest.response);
+  var listaAnios = [];
+  for (var i=0; i<cons.data.length; i++){
+      listaAnios.push(cons.data[i].anios);
+  }
+
+  return listaAnios;
+}
+
+
 export default InfoColumnistos;
