@@ -43,7 +43,7 @@ constructor(props){
     return (<div className="container-fluid  p-0">
 
       <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio}></Navbar>
-      <InfoColumnistos/>
+      <InfoColumnistos seleccionAnio={this.manejoDeAnio}/>
 
       <GeneralInformation enlace1="https://apicolumnistos.tedic.net/api/cantidad_articulos" enlace2="https://apicolumnistos.tedic.net/api/total_autores" enlace3="https://apicolumnistos.tedic.net/api/cantidad_meses" enlace4="https://apicolumnistos.tedic.net/api/cantidad_medios"/>
 

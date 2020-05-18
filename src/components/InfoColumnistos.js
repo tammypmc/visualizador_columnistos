@@ -3,12 +3,19 @@ import React, { Component } from 'react';
 class InfoColumnistos extends Component {
 
 
+  handleId = (e) => {
+    this.props.seleccionAnio(e.target.id);
+    //console.log(e.target.id);
+    //console.log(e.currentTarget.id);
+  }
+  
+
   render() {
 
     var listaAnios = ObtenerVariables();
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
-      items.push(<button className="dropdown-item" type="button">{listaAnios[i]}</button>);
+      items.push(<button className="dropdown-item" id={listaAnios[i]} type="button"  onClick={this.handleId}>{listaAnios[i]}</button>);
     }
 
     return (
