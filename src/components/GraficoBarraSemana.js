@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
+import domtoimage from 'dom-to-image';
 
 class GraficoBarraSemana extends Component{
 
@@ -8,16 +9,26 @@ class GraficoBarraSemana extends Component{
         super(props);
         this.chartReference=React.createRef();
       }
+
+      
+    descargarImagen(id){
+      domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
+      .then(function(blob) {
+        window.saveAs(blob, id+'.png');
+      });
+    }
       
 
       render(){
         var datos = ObtenerVariables(this.props.enlace);
-        //console.log(datos);
+        var identificador =this.props.id;
+
           return(
             <div className="App">
             <header className="App-header">
 
             </header>
+            <div className= {identificador}>
         <Bar
         data={datos}
         options= {{
@@ -55,7 +66,10 @@ class GraficoBarraSemana extends Component{
                 }]
               }
         }}/>
-
+ </div>
+<button role="button" class="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+           <i class="icon ion-md-arrow-down"></i> <span class="spn">Descargar</span>
+		</button>
 
             </div>);
       }
@@ -79,7 +93,7 @@ function ObtenerVariables(consulta){
     }
 
     for(var j=0; j<listaDias.length; j++){
-        if(lis.includes(listaDias[j]) == false){
+        if(lis.includes(listaDias[j]) === false){
             datos.push({dia: listaDias[j], numero: 0});
             lis.push(listaDias[j]);
         }

@@ -46,7 +46,7 @@ constructor(props){
 
         <div class="row  m-5">
           <div class="shadow w-100 p-3 bg-white">
-            <GraficoBarraSemana enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
+            <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ constructor(props){
         <div className="row  m-5">
           <div className="col-md-6 offset-md-3">
             <div className="shadow p-3 bg-white ">
-              <GraficoDiasSinMujeres enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres" titulo="Días sin mujeres"/>
+              <GraficoDiasSinMujeres id="diasSinMujeres" enlace="https://apicolumnistos.tedic.net/api/dias_sin_mujeres" titulo="Días sin mujeres"/>
             </div>
           </div>
         </div>

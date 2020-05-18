@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
-import html2canvas from "html2canvas";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 import '../App.css';
+import domtoimage from 'dom-to-image';
 
 /* para llamar esta clase
          <GraficoDiasSinMujeres
@@ -9,18 +10,29 @@ import '../App.css';
          />
 */
 class GraficoDiasSinMujeres extends Component{
+
     constructor(props){
         super(props);
         this.chartReference=React.createRef();
       }
 
+
+      descargarImagen(id){
+        domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
+        .then(function(blob) {
+          window.saveAs(blob, id+'.png');
+        });
+      }
+
       render(){
         var datos = ObtenerVariables(this.props.enlace);
+        var identificador =this.props.id;
         return (
             <div className="App">
             <header className="App-header">
             
             </header>
+            <div className= {identificador}>
         <HorizontalBar 
         data={datos} 
         options= {{
@@ -59,6 +71,11 @@ class GraficoDiasSinMujeres extends Component{
                 }]
               }      
         }}/>
+
+        </div>
+        <button role="button" class="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+                  <i class="icon ion-md-arrow-down"></i> <span class="spn">Descargar</span>
+            </button>
 
             
             </div>

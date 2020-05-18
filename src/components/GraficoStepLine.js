@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import html2canvas from "html2canvas";
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -74,6 +73,7 @@ class GraficoStepLine extends Component {
                 title: {
                     display: true,
                     text: '¿Cómo se distribuye por semana?',
+                    fontSize:20
                 }
             }
         });
