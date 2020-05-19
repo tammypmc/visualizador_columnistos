@@ -32,7 +32,7 @@ class DropdownDates extends Component {
     var listaAnios = ObtenerVariables(this.props.enlaceAnios);
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
-      items.push(<button type="button" class="btn btn-secondary btn-secondary-custom py-0 ">{listaAnios[i]}</button>)
+      items.push(<button type="button"  id={listaAnios[i]} class="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{listaAnios[i]}</button>)
     }
     return (
     <div className="container">

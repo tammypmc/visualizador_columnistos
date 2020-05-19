@@ -30,7 +30,7 @@ constructor(props){
     this.setState({segundaFecha: fecha2});
   }
   manejoDeAnio=(anio_dropdown) =>{
-    console.log(anio_dropdown);
+
     this.setState({anio: anio_dropdown});
   }
 
