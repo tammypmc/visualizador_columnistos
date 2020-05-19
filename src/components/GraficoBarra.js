@@ -57,6 +57,11 @@ class GraficoBarra extends Component {
                   stepSize: 10,
                   max: 100
                 }
+              },
+              plugins: {
+                datalabels: {
+                  display: false
+                }
               }
             }}
           />

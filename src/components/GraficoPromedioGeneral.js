@@ -1,9 +1,5 @@
-import React, {
-  Component
-} from 'react';
-import {
-  HorizontalBar
-} from 'react-chartjs-2';
+import React, {  Component } from 'react';
+import {  HorizontalBar } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import '../App.css';
 
@@ -17,14 +13,9 @@ class GraficoPromedioGeneral extends Component {
   render() {
     var datos = ObtenerPromedios(this.props.enlace);
 
-    return ( <
-      div className = "App" >
-      <
-      header className = "App-header" >
+    return (
 
-      <
-      /header> <
-      HorizontalBar data = {
+      <HorizontalBar data = {
         datos
       }
       options = {
@@ -85,10 +76,7 @@ class GraficoPromedioGeneral extends Component {
         }
       }
       />
-
-
-      <
-      /div>
+      
     );
   }
 

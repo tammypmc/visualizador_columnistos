@@ -5,7 +5,7 @@ class InfoColumnistos extends Component {
 
   handleId = (e) => {
     this.props.seleccionAnio(e.target.id);
-    
+
   }
 
 
@@ -24,7 +24,7 @@ class InfoColumnistos extends Component {
 
     <div className="col-md-12">
       <div className="form-group form-inline">
-        <h3>¿Cuántas mujeres hay opinando en los medios de Argentina desde </h3>
+        <h3>¿Cuántas mujeres hay opinando en los medios de Paraguay desde </h3>
 
         <div className="dropdown">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

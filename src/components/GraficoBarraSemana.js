@@ -68,6 +68,13 @@ class GraficoBarraSemana extends Component{
                     max: 100
                   }
                 }]
+              },
+              plugins: {
+                datalabels: {
+
+                  display: false,
+
+                }
               }
         }}/>
  </div>

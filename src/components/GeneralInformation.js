@@ -5,12 +5,12 @@ class GeneralInformation extends Component{
   render() {
     var consultas = ObtenerVariables(this.props.enlace1, this.props.enlace2, this.props.enlace3, this.props.enlace4)
     return (
-        <div class="d-flex flex-row justify-content-center">
-          <ul class="list-group list-group-horizontal-sm shadow bg-white rounded">
-            <li class="list-group-item text-secondary border-right-0"><b>{consultas[0]}</b> <br></br> Notas recolectadas  </li>
-            <li class="list-group-item text-secondary border-right-0"><b>{consultas[1]}</b> <br></br> Autores/as recolectados </li>
-            <li class="list-group-item text-secondary border-right-0"><b>{consultas[2]} meses</b> <br></br> Tiempo de observación </li>
-            <li class="list-group-item text-secondary border-right-0"><b>{consultas[3]} medios</b> <br></br> Plataformas en observación </li>
+        <div className="d-flex flex-row justify-content-center">
+          <ul className="list-group list-group-horizontal-sm shadow bg-white rounded">
+            <li className="list-group-item text-secondary border-right-0"><b>{consultas[0]}</b> <br></br> Notas recolectadas  </li>
+            <li className="list-group-item text-secondary border-right-0"><b>{consultas[1]}</b> <br></br> Autores/as recolectados </li>
+            <li className="list-group-item text-secondary border-right-0"><b>{consultas[2]} meses</b> <br></br> Tiempo de observación </li>
+            <li className="list-group-item text-secondary border-right-0"><b>{consultas[3]} medios</b> <br></br> Plataformas en observación </li>
           </ul>
         </div>
     )

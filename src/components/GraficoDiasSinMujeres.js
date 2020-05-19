@@ -79,6 +79,13 @@ class GraficoDiasSinMujeres extends Component{
                     drawOnChartArea: false
                   }
                 }]
+              },
+              plugins: {
+                datalabels: {
+
+                  display: false
+
+                }
               }
         }}/>
 
