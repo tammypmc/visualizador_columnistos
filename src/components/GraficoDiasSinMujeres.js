@@ -82,9 +82,18 @@ class GraficoDiasSinMujeres extends Component{
               },
               plugins: {
                 datalabels: {
-
-                  display: false
-
+                  formatter: function(value, context) {
+                    return value + ' días';
+                  },
+                  display: true,
+                  align: 'end',
+                  anchor: 'end',
+                  font: {
+                    family: 'Montserrat',
+                    style: 'normal',
+                    display: 'swap',
+                    weight: '500'
+                  }
                 }
               }
         }}/>
@@ -104,6 +113,10 @@ function ObtenerVariables(consulta, listaEnlaces, listaMedios){
     var dias = []
     var httpRequest = new XMLHttpRequest();
 
+    httpRequest.open('GET',  consulta,false);
+    httpRequest.send();
+    var cons =JSON.parse(httpRequest.response);
+    dias.push(cons.data[0].dias_sin_mujeres);
 
     for(var i=0; i<listaEnlaces.length; i++){
       httpRequest.open('GET',  listaEnlaces[i],false);
@@ -112,17 +125,12 @@ function ObtenerVariables(consulta, listaEnlaces, listaMedios){
       dias.push(cons.data[0].dias_sin_mujeres);
     }
 
-    httpRequest.open('GET',  consulta,false);
-    httpRequest.send();
-    var cons =JSON.parse(httpRequest.response);
-    dias.push(cons.data[0].dias_sin_mujeres);
-
-    var titulos = listaMedios.concat("Total de días");
+    var titulos = ["Total"].concat(listaMedios);
     const data = {
         labels: titulos,
         datasets: [
           {
-            label: 'Total de días: ',
+            label: 'Total: ',
             backgroundColor: 'rgba(165, 76, 120, 1)',
             barThickness: 15,
             data: dias
