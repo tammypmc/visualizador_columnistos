@@ -18,7 +18,7 @@ class GraficoStepLine extends Component {
         this.buildChart();
     }
 
-    
+
     descargarImagen(id){
         domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
         .then(function(blob) {
@@ -29,15 +29,15 @@ class GraficoStepLine extends Component {
     buildChart = () => {
 
         var httpRequest = new XMLHttpRequest();
-        httpRequest.open('GET',this.props.enlace,false);  
+        httpRequest.open('GET',this.props.enlace,false);
         httpRequest.send();
         var datos=JSON.parse(httpRequest.response);
         var lista_datos =[];
         var semana =[];
         var porcentaje =[];
-      
-    
-    
+
+
+
         for (let index = 0; index < datos.data.length; index++) {
             for(var key in datos.data[index]){
                 if(key==="semana"){
@@ -46,9 +46,9 @@ class GraficoStepLine extends Component {
                 if(key==="porcentaje"){
                     porcentaje.push(datos.data[index][key]);
                     }
-        
+
             }
-            
+
         }
 
         const myChartRef = this.chartRef.current.getContext("2d");
@@ -74,6 +74,13 @@ class GraficoStepLine extends Component {
                     display: true,
                     text: '¿Cómo se distribuye por semana?',
                     fontSize:20
+                },
+                plugins: {
+                  datalabels: {
+
+                    display: false,
+
+                  }
                 }
             }
         });
@@ -92,16 +99,16 @@ class GraficoStepLine extends Component {
                 />
             </div>
             </div>
-            <button role="button" class="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
-           <i class="icon ion-md-arrow-down"></i> <span class="spn">Descargar</span>
+            <button role="button" className="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+           <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
             </div>
         )
     }
-  
+
 
 }
 
 
 
-export default GraficoStepLine;     
+export default GraficoStepLine;

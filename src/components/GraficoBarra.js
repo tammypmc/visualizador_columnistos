@@ -68,8 +68,8 @@ class GraficoBarra extends Component {
 
 
            </div>
-           <button role="button" class="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
-           <i class="icon ion-md-arrow-down"></i> <span class="spn">Descargar</span>
+           <button role="button" className="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+           <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
 
           </div>

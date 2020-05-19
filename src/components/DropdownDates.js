@@ -41,7 +41,7 @@ class DropdownDates extends Component {
 
         <div className="custom-control custom-radio ">
           <input type="radio" className="custom-control-input" id="selectorAnioRadioButton" name="defaultExampleRadios"/>
-          <label className="custom-control-label" for="defaultUnchecked">Seleccionar año</label>
+          <label className="custom-control-label" htmlFor="defaultUnchecked">Seleccionar año</label>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ class DropdownDates extends Component {
 
         <div className="custom-control custom-radio">
           <input type="radio" className="custom-control-input" id="selectorRangoRadioButton" name="defaultExampleRadios"/>
-          <label className="custom-control-label" for="defaultUnchecked">Seleccionar rango</label>
+          <label className="custom-control-label" htmlFor="defaultUnchecked">Seleccionar rango</label>
         </div>
       </div>
 
@@ -67,7 +67,7 @@ class DropdownDates extends Component {
 
           <Calendar
             onChange={this.onChange}
-            showNeighboringMonth="false"
+
             selectRange = "true"
             defaultView = "month"
             locale = "es-419"
