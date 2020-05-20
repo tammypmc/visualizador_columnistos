@@ -81,7 +81,27 @@ class GraficoStepLine extends Component {
                     display: false,
 
                   }
-                }
+                },
+                scales: {
+                    xAxes: [{
+                      gridLines: {
+                        drawOnChartArea: false,
+                        categorySpacing: 0
+                      },
+                    }],
+                    yAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: true,
+                        drawOnChartArea: false
+                      },
+                      ticks: {
+                        beginAtZero: true,
+                        stepSize: 25,
+                        max: 50
+                      }
+                    }]
+                  }
             }
         });
 
@@ -99,7 +119,7 @@ class GraficoStepLine extends Component {
                 />
             </div>
             </div>
-            <button role="button" className="btn btn-outline-secondary btn-lg btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+            <button role="button" className="btn btn-outline-secondary btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
            <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
             </div>

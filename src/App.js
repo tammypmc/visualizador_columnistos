@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React, {Component} from 'react';
 import GeneralInformation from './components/GeneralInformation';
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,7 +13,6 @@ const dominioAPI = "https://apicolumnistos.tedic.net/";
 
 class App extends Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +22,7 @@ class App extends Component {
     };
   }
 
-  /*obtiene fechas y da el formato necesario para la consulta del api */
+  /* obtiene fechas y da el formato necesario para la consulta del api */
   manejoDeFechas = (fecha) => {
 
     var fecha1 = formatDate(fecha[0].toString().split(" ", 4));
@@ -43,9 +40,9 @@ class App extends Component {
   }
 
   render() {
-    var aniosDisponibles = dominioAPI + "api/anios_disponibles";   
-    var artDisponibles =  dominioAPI + "api/cantidad_articulos";
-    var autoresDisponibles =  dominioAPI + "api/total_autores";
+    var aniosDisponibles = dominioAPI + "api/anios_disponibles";
+    var artDisponibles = dominioAPI + "api/cantidad_articulos";
+    var autoresDisponibles = dominioAPI + "api/total_autores";
     var mesesDisponibles = dominioAPI + "api/cantidad_meses";
     var mediosDisponibles = dominioAPI + "api/cantidad_medios";
     var promediosGenerales = dominioAPI + "api/periodicos";
@@ -59,80 +56,79 @@ class App extends Component {
 
     var medios = ["abc", "lanacionpy", "ultimahora"];
 
-    return (
-    <div className = "container-fluid  p-0" >
+    return (<div className="container-fluid  p-0">
 
-      < Navbar seleccionFecha = {this.manejoDeFechas} seleccionAnio = {this.manejoDeAnio} enlaceAnios = {aniosDisponibles} > </Navbar>
-      <InfoColumnistos seleccionAnio = {this.manejoDeAnio} enlaceAnios = {aniosDisponibles}/>
-      <GeneralInformation enlace1 = {artDisponibles} enlace2 = {autoresDisponibles} enlace3 = {mesesDisponibles} enlace4 = {mediosDisponibles} />
+      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}></Navbar>
+      <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}/>
+      <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
-      <div className = "row  m-5" >
-        <div className = "col-md-6 offset-md-3" >
-          <div className = "shadow p-3 bg-white " >
-            <GraficoPromedioGeneral enlace = {promediosGenerales} titulo = "Promedios generales" />
-          </div>
-        </div>
-      </div>
-
-      <div className = "container w-100" >
-        <div className = "row  m-5" >
-          <div className = "shadow w-100 p-3 bg-white" >
-          <div id="overlayGraficoBarraSemana">
-            <GraficoBarraSemana id = "graficosemana" enlace = {graficoSemana} titulo = "¿Cómo se distribuyen por dia de la semana?" />
-          </div>
+      <div className="container">
+        <div className="row  m-auto py-5 justify-content-center">
+          <div className="col-m-auto">
+            <div className="shadow p-3 ">
+              <GraficoPromedioGeneral enlace={promediosGenerales} titulo="Promedios generales"/>
+            </div>
           </div>
         </div>
 
-      <div className = "row  m-5" >
-        <div className = "shadow w-100 p-3 bg-white" >
-        <div id="overlayGraficoBarra">
-          <GraficoBarra id = "semana" enlace = {graficoSemanaPeriodico} titulo = "¿Cómo se distribuye por día de la semana por medio?" />
-        </div>
-        </div>
-      </div>
-
-      <div className = "row  m-5" >
-        <div className = "shadow w-100 p-3 bg-white" >
-          <GraficoBarra id = "mes" enlace = {distribucionMesAnio} titulo = "¿Cómo se distribuyen por mes por medio?" />
-        </div>
-      </div>
-
-      <div className = "row  m-5" >
-        <div className = "shadow w-100 p-3 bg-white" >
-          <GraficoStepLine enlace = {distribucionSemanaAnio} id = "GraficoStepLine" />
-        </div>
-      </div>
-
-      <div className = "row  m-5" >
-        <div className = "col-md-6 offset-md-3" >
-          <div className = "shadow p-3 bg-white " >
-            <GraficoDiasSinMujeres id = "diasSinMujeres" enlace = {diasSinMujeres} enlaceDias = {diasDisponibles} enlaceMedio = {diasSinMujeresPorMedio} listaMedios = {medios} titulo = "Días sin mujeres" />
+        <div className="row  m-auto py-5">
+            <div className="shadow w-100 p-3 bg-white">
+              <div id="overlayGraficoBarraSemana">
+                <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div className="row  m-auto py-5">
+            <div className="shadow w-100 p-3 bg-white">
+              <div id="overlayGraficoBarra">
+                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
+              </div>
+            </div>
+          </div>
+
+          <div className="row  m-auto py-5">
+            <div className="shadow w-100 p-3 bg-white">
+              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por medio?"/>
+            </div>
+          </div>
+
+          <div className="row  m-auto py-5">
+            <div className="shadow w-100 p-3 bg-white">
+              <GraficoStepLine enlace={distribucionSemanaAnio} id="GraficoStepLine"/>
+            </div>
+          </div>
+
+          <div className="row  m-auto py-5 justify-content-center">
+            <div className="col-m-auto ">
+              <div className="shadow p-3 bg-white ">
+                <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={medios} titulo="Días sin mujeres"/>
+              </div>
+            </div>
+          </div>
+
       </div>
 
-    </div>
-
-  </div>)
-
-    }
+    </div>)
 
   }
 
+}
 
-  /* brinda el formato de fecha yyyy/mm/dd */
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+/* brinda el formato de fecha yyyy/mm/dd */
+function formatDate(date) {
+  var d = new Date(date),
+    month = '' + (
+    d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
 
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
+  if (month.length < 2)
+    month = '0' + month;
+  if (day.length < 2)
+    day = '0' + day;
 
-    return [year, month, day].join('-');
-  }
+  return [year, month, day].join('-');
+}
 
-  export default App;
+export default App;

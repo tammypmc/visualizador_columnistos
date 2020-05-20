@@ -25,7 +25,7 @@ class Navbar extends Component {
   handleScroll = () => {
     const {lastScrollY} = this.state;
     const currentScrollY = window.scrollY;
-
+    console.log(this.state);
 
     if (lastScrollY < 700) {
       this.setState({slide: '-60px'});
