@@ -94,7 +94,7 @@ function ObtenerVariables(consulta){
     httpRequest.send();
     var cons =JSON.parse(httpRequest.response);
     var datos = cons.data;
-    //console.log(datos);
+   
 
     var listaDias = ["Domingo","Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
     var lis = [];
@@ -141,8 +141,7 @@ function ObtenerVariables(consulta){
     for(var y=0; y<datos.length;y++){
         datos_final[datos[y].dia] =  datos[y];
     }
-    console.log(datos);
-    console.log(datos_final)
+ 
     const data = {
         labels:listaDias,
         datasets: [

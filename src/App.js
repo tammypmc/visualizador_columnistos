@@ -31,6 +31,8 @@ class App extends Component {
     this.setState({segundaFecha: fecha2});
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
+ 
+    
   }
   manejoDeAnio = (anio_dropdown) => {
 
@@ -73,7 +75,9 @@ class App extends Component {
 
         <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
+            
               <div id="overlayGraficoBarraSemana">
+              
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
               </div>
             </div>
