@@ -11,6 +11,7 @@ import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
 
+const dominioAPI = "https://apicolumnistos.tedic.net/";
 
 class App extends Component {
 
@@ -41,23 +42,34 @@ class App extends Component {
     document.getElementById("overlayGraficoBarra").style.display = "block";
   }
 
-
   render() {
-    var graficoSemanaPeriodico = "https://apicolumnistos.tedic.net/api/distribucion_semana_periodico_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
-    var graficoSemana = "https://apicolumnistos.tedic.net/api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
-    var distribucionMesAnio = "https://apicolumnistos.tedic.net/api/distribucion_mes_anio/" + this.state.anio;
-    var distribucionSemanaAnio = "https://apicolumnistos.tedic.net/api/distribucion_semana_anio/" + this.state.anio;
+    var aniosDisponibles = dominioAPI + "api/anios_disponibles";   
+    var artDisponibles =  dominioAPI + "api/cantidad_articulos";
+    var autoresDisponibles =  dominioAPI + "api/total_autores";
+    var mesesDisponibles = dominioAPI + "api/cantidad_meses";
+    var mediosDisponibles = dominioAPI + "api/cantidad_medios";
+    var promediosGenerales = dominioAPI + "api/periodicos";
+    var graficoSemanaPeriodico = dominioAPI + "api/distribucion_semana_periodico_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
+    var graficoSemana = dominioAPI + "api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
+    var distribucionMesAnio = dominioAPI + "api/distribucion_mes_anio/" + this.state.anio;
+    var distribucionSemanaAnio = dominioAPI + "api/distribucion_semana_anio/" + this.state.anio;
+    var diasSinMujeres = dominioAPI + "api/dias_sin_mujeres";
+    var diasDisponibles = dominioAPI + "api/dias_disponibles";
+    var diasSinMujeresPorMedio = dominioAPI + "api/dias_sin_mujeres_medio/";
+
+    var medios = ["abc", "lanacionpy", "ultimahora"];
+
     return (
     <div className = "container-fluid  p-0" >
 
-      < Navbar seleccionFecha = {this.manejoDeFechas} seleccionAnio = {this.manejoDeAnio} enlaceAnios = "https://apicolumnistos.tedic.net/api/anios_disponibles" > </Navbar>
-      <InfoColumnistos seleccionAnio = {this.manejoDeAnio} enlaceAnios = "https://apicolumnistos.tedic.net/api/anios_disponibles"/>
-      <GeneralInformation enlace1 = "https://apicolumnistos.tedic.net/api/cantidad_articulos" enlace2 = "https://apicolumnistos.tedic.net/api/total_autores" enlace3 = "https://apicolumnistos.tedic.net/api/cantidad_meses" enlace4 = "https://apicolumnistos.tedic.net/api/cantidad_medios" />
+      < Navbar seleccionFecha = {this.manejoDeFechas} seleccionAnio = {this.manejoDeAnio} enlaceAnios = {aniosDisponibles} > </Navbar>
+      <InfoColumnistos seleccionAnio = {this.manejoDeAnio} enlaceAnios = {aniosDisponibles}/>
+      <GeneralInformation enlace1 = {artDisponibles} enlace2 = {autoresDisponibles} enlace3 = {mesesDisponibles} enlace4 = {mediosDisponibles} />
 
       <div className = "row  m-5" >
         <div className = "col-md-6 offset-md-3" >
           <div className = "shadow p-3 bg-white " >
-            <GraficoPromedioGeneral enlace = "https://apicolumnistos.tedic.net/api/periodicos" titulo = "Promedios generales" />
+            <GraficoPromedioGeneral enlace = {promediosGenerales} titulo = "Promedios generales" />
           </div>
         </div>
       </div>
@@ -88,14 +100,13 @@ class App extends Component {
       <div className = "row  m-5" >
         <div className = "shadow w-100 p-3 bg-white" >
           <GraficoStepLine enlace = {distribucionSemanaAnio} id = "GraficoStepLine" />
-
         </div>
       </div>
 
       <div className = "row  m-5" >
         <div className = "col-md-6 offset-md-3" >
           <div className = "shadow p-3 bg-white " >
-            <GraficoDiasSinMujeres id = "diasSinMujeres" enlace = "https://apicolumnistos.tedic.net/api/dias_sin_mujeres" enlaceDias = "https://apicolumnistos.tedic.net/api/dias_disponibles" enlaceMedio = "https://apicolumnistos.tedic.net/api/dias_sin_mujeres_medio/" listaMedios = {["abc", "lanacionpy", "ultimahora"]} titulo = "Días sin mujeres" />
+            <GraficoDiasSinMujeres id = "diasSinMujeres" enlace = {diasSinMujeres} enlaceDias = {diasDisponibles} enlaceMedio = {diasSinMujeresPorMedio} listaMedios = {medios} titulo = "Días sin mujeres" />
           </div>
         </div>
       </div>
