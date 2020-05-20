@@ -85,7 +85,7 @@ class GraficoStepLine extends Component {
                 scales: {
                     xAxes: [{
                       gridLines: {
-                        drawOnChartArea: false,
+                        drawOnChartArea: true,
                         categorySpacing: 0
                       },
                     }],
@@ -93,7 +93,7 @@ class GraficoStepLine extends Component {
                       display: true,
                       gridLines: {
                         display: true,
-                        drawOnChartArea: false
+                        drawOnChartArea: true
                       },
                       ticks: {
                         beginAtZero: true,

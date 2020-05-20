@@ -32,10 +32,12 @@ class GraficoBarra extends Component {
 
         return(
             <div className="App">
+            <header className="App-header">
 
+            </header>
 
             <div className= {identificador}>
-
+            
             <Bar
             data={consulta.data}
             width={null}
