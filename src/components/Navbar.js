@@ -18,20 +18,23 @@ class Navbar extends Component {
   }
 
   componentWillUnmount() {
-    // If this component is unmounted, stop listening
     window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
     const {lastScrollY} = this.state;
     const currentScrollY = window.scrollY;
-    console.log(this.state);
 
-    if (lastScrollY < 700) {
+    if (lastScrollY < 600) {
+
+      console.log(currentScrollY);
       this.setState({slide: '-60px'});
     } else {
+
+      console.log(currentScrollY);
       this.setState({slide: '0px'});
     }
+
     this.setState({lastScrollY: currentScrollY});
   };
 
@@ -56,7 +59,7 @@ handleYear = (Year) => {        /*envia a app.js el rango de fechas seleccionada
   render() {
     return (<nav className="navbar sticky-top navbar-expand-lg navbar-custom " style={{
         transform: `translate(0, ${this.state.slide})`,
-        transition: 'transform 100ms linear'
+        transition: 'transform 50ms linear'
       }}>
       <a className="navbar-brand pl-5" href="/">ColumnistOS</a>
       <button className="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +69,7 @@ handleYear = (Year) => {        /*envia a app.js el rango de fechas seleccionada
       <div className="collapse navbar-collapse " id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Fecha
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

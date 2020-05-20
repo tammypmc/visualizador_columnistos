@@ -22,8 +22,6 @@ class DropdownDates extends Component {
 
  handleId = (e) => {
   this.props.obtenerAnio(e.target.id);
-  //console.log(e.target.id);
-  //console.log(e.currentTarget.id);
 }
 
 
