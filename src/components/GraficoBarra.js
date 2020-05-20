@@ -29,6 +29,13 @@ class GraficoBarra extends Component {
 
         var consulta =ObtenerVariables(this.props.enlace); /*retorna los datos dado el api*/
         var identificador =this.props.id;
+        var x=0;
+        if(this.props.id==="semana"){
+          x=100;
+        }else{
+          x=50;
+        }
+
 
         return(
             <div className="App">
@@ -52,12 +59,20 @@ class GraficoBarra extends Component {
                 display:true,
                 position:'right'
               },
-              xAxes:{
-                ticks: {
+              scales: {
+                xAxes: {ticks: {
                   beginAtZero: true,
                   stepSize: 10,
-                  max: 100
-                }
+                  max: x
+                }},
+                yAxes: [{
+                  
+                  ticks: {
+                    beginAtZero: true,
+                    stepSize: 10,
+                    max: x
+                  }
+                }]
               },
               plugins: {
                 datalabels: {

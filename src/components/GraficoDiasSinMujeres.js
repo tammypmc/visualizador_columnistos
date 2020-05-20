@@ -30,7 +30,7 @@ class GraficoDiasSinMujeres extends Component{
         for(var i=0; i<this.props.listaMedios.length; i++){
           listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
         }
-        console.log(listaEnlaces);
+
         var datos = ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
         var dias = ObtenerDias(this.props.enlaceDias);
         var identificador =this.props.id;
