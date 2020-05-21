@@ -32,6 +32,8 @@ class App extends Component {
     this.setState({segundaFecha: fecha2});
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
+    document.getElementById("main-titleBarra").style.display="none";
+    document.getElementById("main-titleBarraSemana").style.display="none";
 
 
   }
@@ -41,7 +43,8 @@ class App extends Component {
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
     console.log(document.getElementsByTagName("bar").data);
-
+    document.getElementById("main-titleBarra").style.display="block";
+    document.getElementById("main-titleBarraSemana").style.display="block";
   }
 
   render() {
@@ -79,15 +82,21 @@ class App extends Component {
         <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
 
-              <div id="overlayGraficoBarraSemana">
+             
+             
+            
+                <p id="main-titleBarra" >Debes seleccionar un rango de fechas</p>
+                <div id="overlayGraficoBarra">
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
-              </div>
+                </div>
             </div>
+           
           </div>
 
           <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
-                      <div id="overlayGraficoBarra">
+                <p id="main-titleBarraSemana" >Debes seleccionar un rango de fechas</p>
+                      <div id="overlayGraficoBarraSemana">
                         <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
 
                         </div>
