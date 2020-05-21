@@ -39,6 +39,8 @@ class App extends Component {
     this.setState({anio: anio_dropdown});
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
+    console.log(document.getElementsByTagName("bar").data);
+    
   }
 
   render() {
@@ -68,7 +70,7 @@ class App extends Component {
         <div className="row  m-auto py-5 justify-content-center">
           <div className="col-m-auto">
             <div className="shadow p-3 ">
-              <GraficoPromedioGeneral enlace={promediosGenerales} titulo="Promedios generales"/>
+              <GraficoPromedioGeneral id="graficogeneral" enlace={promediosGenerales} titulo="Promedios generales"/>
             </div>
           </div>
         </div>
@@ -77,7 +79,6 @@ class App extends Component {
             <div className="shadow w-100 p-3 bg-white">
             
               <div id="overlayGraficoBarraSemana">
-              
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
               </div>
             </div>
@@ -85,10 +86,13 @@ class App extends Component {
 
           <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
-              <div id="overlayGraficoBarra">
-                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
-              </div>
+                      <div id="overlayGraficoBarra">
+                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>         
+                      
+                        </div>
+
             </div>
+
           </div>
 
           <div className="row  m-auto py-5">

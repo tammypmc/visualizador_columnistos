@@ -78,7 +78,8 @@ class GraficoBarraSemana extends Component{
               }
         }}/>
  </div>
-<button role="button" className="btn btn-outline-secondary  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+  <br/>
+<button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
            <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
 
