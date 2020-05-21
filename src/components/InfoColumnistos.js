@@ -27,7 +27,7 @@ class InfoColumnistos extends Component {
       <div className="row m-auto justify-content-center">
         <div className="col-auto ">
           <div className="form-group form-inline">
-            <p class="h3">¿Cuántas mujeres hay opinando en los medios de Paraguay desde
+            <p class="h3">¿Cuántas mujeres hay opinando en los medios de {this.props.pais} desde
             </p>
 
             <div className="dropdown">

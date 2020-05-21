@@ -10,6 +10,7 @@ import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
 
 const dominioAPI = "https://apicolumnistos.tedic.net/";
+const pais = "Paraguay";
 
 class App extends Component {
 
@@ -31,8 +32,8 @@ class App extends Component {
     this.setState({segundaFecha: fecha2});
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
- 
-    
+
+
   }
   manejoDeAnio = (anio_dropdown) => {
 
@@ -40,7 +41,7 @@ class App extends Component {
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
     console.log(document.getElementsByTagName("bar").data);
-    
+
   }
 
   render() {
@@ -63,7 +64,7 @@ class App extends Component {
     return (<div className="container-fluid  p-0">
 
       <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}></Navbar>
-      <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}/>
+      <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles} pais={pais}/>
       <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
       <div className="container">
@@ -77,7 +78,7 @@ class App extends Component {
 
         <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
-            
+
               <div id="overlayGraficoBarraSemana">
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
               </div>
@@ -87,8 +88,8 @@ class App extends Component {
           <div className="row  m-auto py-5">
             <div className="shadow w-100 p-3 bg-white">
                       <div id="overlayGraficoBarra">
-                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>         
-                      
+                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
+
                         </div>
 
             </div>
