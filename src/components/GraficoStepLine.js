@@ -69,6 +69,9 @@ class GraficoStepLine extends Component {
                 }]
             },
             options: {
+                elements: {
+                  point: { radius: 0 }
+                },
                 responsive: true,
                 title: {
                     display: true,
@@ -77,7 +80,6 @@ class GraficoStepLine extends Component {
                 },
                 plugins: {
                   datalabels: {
-
                     display: false,
 
                   }
