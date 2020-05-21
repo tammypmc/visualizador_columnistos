@@ -33,7 +33,6 @@ class App extends Component {
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
 
-
   }
   manejoDeAnio = (anio_dropdown) => {
 
@@ -61,60 +60,66 @@ class App extends Component {
 
     var medios = ["abc", "lanacionpy", "ultimahora"];
 
-    return (<div className="container-fluid  p-0">
+    return (<div className="container-auto py-0">
 
       <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}></Navbar>
       <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles} pais={pais}/>
       <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
-      <div className="container">
-        <div className="row  m-auto py-5 justify-content-center">
-          <div className="col-m-auto">
+
+      <div className="d-flex flex-column justify-content-center">
+
+        <div className="row m-lg-5  justify-content-center">
+          <div className="col-lg-4">
             <div className="shadow p-3 ">
               <GraficoPromedioGeneral id="graficogeneral" enlace={promediosGenerales} titulo="Promedios generales"/>
             </div>
           </div>
         </div>
 
-        <div className="row  m-auto py-5">
-            <div className="shadow w-100 p-3 bg-white">
-
+        <div className="row  m-lg-5  justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3">
               <div id="overlayGraficoBarraSemana">
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="row  m-auto py-5">
-            <div className="shadow w-100 p-3 bg-white">
-                      <div id="overlayGraficoBarra">
-                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
-
-                        </div>
-
-            </div>
-
-          </div>
-
-          <div className="row  m-auto py-5">
-            <div className="shadow w-100 p-3 bg-white">
-              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por medio?"/>
-            </div>
-          </div>
-
-          <div className="row  m-auto py-5">
-            <div className="shadow w-100 p-3 bg-white">
-              <GraficoStepLine enlace={distribucionSemanaAnio} id="GraficoStepLine"/>
-            </div>
-          </div>
-
-          <div className="row  m-auto py-5 justify-content-center">
-            <div className="col-m-auto ">
-              <div className="shadow p-3 bg-white ">
-                <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={medios} titulo="Días sin mujeres"/>
+        <div className="row  m-lg-5  justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3 ">
+              <div id="overlayGraficoBarra">
+                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="row  m-lg-5 justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3">
+              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por medio?"/>
+            </div>
+          </div>
+        </div>
+
+        <div className="row  m-lg-5 justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3">
+              <GraficoStepLine enlace={distribucionSemanaAnio} id="GraficoStepLine"/>
+            </div>
+          </div>
+        </div>
+
+        <div className="row m-lg-5 justify-content-center">
+          <div className="col-lg-4">
+            <div className="shadow p-3 ">
+              <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={medios} titulo="Días sin mujeres"/>
+            </div>
+          </div>
+        </div>
 
       </div>
 

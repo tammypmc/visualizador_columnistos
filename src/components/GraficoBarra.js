@@ -44,7 +44,7 @@ class GraficoBarra extends Component {
             </header>
 
             <div className= {identificador}>
-            
+
             <Bar
             data={consulta.data}
             width={null}
@@ -57,7 +57,10 @@ class GraficoBarra extends Component {
               },
               legend:{
                 display:true,
-                position:'right'
+                position:'top',
+                labels: {
+                boxWidth: 20
+                }
               },
               scales: {
                 xAxes: {ticks: {
@@ -66,7 +69,7 @@ class GraficoBarra extends Component {
                   max: x
                 }},
                 yAxes: [{
-                  
+
                   ticks: {
                     beginAtZero: true,
                     stepSize: 10,

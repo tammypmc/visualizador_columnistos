@@ -78,6 +78,13 @@ class GraficoStepLine extends Component {
                     text: '¿Cómo se distribuye por semana?',
                     fontSize:20
                 },
+                legend:{
+                  display:true,
+                  position:'top',
+                  labels: {
+                  boxWidth: 20
+                  }
+                },
                 plugins: {
                   datalabels: {
                     display: false,

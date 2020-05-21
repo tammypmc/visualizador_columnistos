@@ -5,7 +5,7 @@ class GeneralInformation extends Component{
   render() {
     var consultas = ObtenerVariables(this.props.enlace1, this.props.enlace2, this.props.enlace3, this.props.enlace4)
     return (
-        <div className="d-flex flex-row justify-content-center">
+        <div className="d-flex flex-row justify-content-center mb-5">
           <ul className="list-group list-group-horizontal-sm shadow bg-white rounded">
             <li className="list-group-item text-secondary border-right-0"><b>{consultas[0]}</b> <br></br> Notas recolectadas  </li>
             <li className="list-group-item text-secondary border-right-0"><b>{consultas[1]}</b> <br></br> Autores/as recolectados </li>
