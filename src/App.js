@@ -32,6 +32,8 @@ class App extends Component {
     this.setState({segundaFecha: fecha2});
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
+    document.getElementById("main-titleBarra").style.display="none";
+    document.getElementById("main-titleBarraSemana").style.display="none";
 
   }
   manejoDeAnio = (anio_dropdown) => {
@@ -40,7 +42,8 @@ class App extends Component {
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
     console.log(document.getElementsByTagName("bar").data);
-
+    document.getElementById("main-titleBarra").style.display="block";
+    document.getElementById("main-titleBarraSemana").style.display="block";
   }
 
   render() {
@@ -77,22 +80,26 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="row  m-lg-5  justify-content-center">
-          <div className="col-lg-7">
-            <div className="shadow p-3">
-              <div id="overlayGraficoBarraSemana">
+<div className="row  m-lg-5  justify-content-center">
+  <div className="col-lg-7">
+    <div className="shadow p-3">
+                <p id="main-titleBarra" >Debes seleccionar un rango de fechas</p>
+                <div id="overlayGraficoBarra">
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
-              </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div className="row  m-lg-5  justify-content-center">
-          <div className="col-lg-7">
-            <div className="shadow p-3 ">
-              <div id="overlayGraficoBarra">
-                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
-              </div>
+<div className="row  m-lg-5  justify-content-center">
+  <div className="col-lg-7">
+    <div className="shadow p-3 ">
+                <p id="main-titleBarraSemana" >Debes seleccionar un rango de fechas</p>
+                      <div id="overlayGraficoBarraSemana">
+                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
+
+                        </div>
+
             </div>
           </div>
         </div>
