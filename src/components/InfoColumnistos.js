@@ -2,9 +2,13 @@ import React, {Component} from 'react';
 
 class InfoColumnistos extends Component {
 
+  constructor(props){
+    super(props);
+    this.anio = 2020;
+  }
   handleId = (e) => {
     this.props.seleccionAnio(e.target.id);
-
+    this.anio = e.target.id;
   }
 
   render() {
@@ -28,7 +32,7 @@ class InfoColumnistos extends Component {
 
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                2020
+                {this.anio}
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                 {items}
