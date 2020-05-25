@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 import '../App.css';
 import {descargarImagen} from './utilities'
@@ -9,48 +9,47 @@ import {descargarImagen} from './utilities'
          titulo= "Dias sin mujeres"
          />
 */
-class GraficoDiasSinMujeres extends Component{
+class GraficoDiasSinMujeres extends Component {
 
-    constructor(props){
-        super(props);
-        this.chartReference=React.createRef();
-      }
+  constructor(props) {
+    super(props);
+    this.chartReference = React.createRef();
+  }
 
-      render(){
-        var listaEnlaces = [];
-        var enlace = this.props.enlaceMedio;
-        for(var i=0; i<this.props.listaMedios.length; i++){
-          listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
-        }
+  render() {
+    var listaEnlaces = [];
+    var enlace = this.props.enlaceMedio;
+    for (var i = 0; i < this.props.listaMedios.length; i++) {
+      listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
+    }
 
-        var datos = ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
-        var dias = ObtenerDias(this.props.enlaceDias);
-        var identificador =this.props.id;
-        return (
-            <div className="componente_sin_mujeres">
+    var datos = ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
+    var dias = ObtenerDias(this.props.enlaceDias);
+    var identificador = this.props.id;
+    return (<div className="componente_sin_mujeres">
 
-            <div className= {identificador}>
-        <HorizontalBar
-        data={datos}
-        options= {{
-          events: [],
-            title:{
-                display:true,
-                text:this.props.titulo,   /* se extrae de de app el titulo del grafico*/
-                fontSize:20
-              },
-              legend: {
-                display: false
+      <div className={identificador}>
+        <HorizontalBar data={datos} options={{
+            events: [],
+            title: {
+              display: true,
+              text: this.props.titulo,
+              /* se extrae de de app el titulo del grafico */
+              fontSize: 20
+            },
+            legend: {
+              display: false
             },
             tooltips: {
-                callbacks: {
-                   label: function(tooltipItem) {
-                          return tooltipItem.yLabel;
-                   }
+              callbacks: {
+                label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
                 }
+              }
             },
             scales: {
-                xAxes: [{
+              xAxes: [
+                {
                   display: false,
                   gridLines: {
                     display: false,
@@ -62,90 +61,88 @@ class GraficoDiasSinMujeres extends Component{
                     stepSize: 50,
                     max: dias
                   }
-                }],
-                yAxes: [{
+                }
+              ],
+              yAxes: [
+                {
                   scaleShowLabels: false,
                   gridLines: {
                     drawOnChartArea: false
                   }
-                }]
-              },
-              plugins: {
-                datalabels: {
-                  formatter: function(value, context) {
-                    return value + ' días';
-                  },
-                  display: true,
-                  align: 'end',
-                  anchor: 'end',
-                  font: {
-                    family: 'Montserrat',
-                    style: 'normal',
-                    display: 'swap',
-                    weight: '500'
-                  }
+                }
+              ]
+            },
+            plugins: {
+              datalabels: {
+                formatter: function(value, context) {
+                  return value + ' días';
+                },
+                display: true,
+                align: 'end',
+                anchor: 'end',
+                font: {
+                  family: 'Montserrat',
+                  style: 'normal',
+                  display: 'swap',
+                  weight: '500'
                 }
               }
-        }}/>
+            }
+          }}/>
 
-        </div>
-        <br/>
-        <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
-                  <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
-            </button>
+      </div>
+      <br/>
+      <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
+        <i className="icon ion-md-arrow-down"></i>
+        <span className="spn">Descargar</span>
+      </button>
 
-
-            </div>
-          );
-      }
-
-}
-function ObtenerVariables(consulta, listaEnlaces, listaMedios){
-    var dias = []
-    var httpRequest = new XMLHttpRequest();
-
-    httpRequest.open('GET',  consulta,false);
-    httpRequest.send();
-    var cons =JSON.parse(httpRequest.response);
-    dias.push(cons.data[0].dias_sin_mujeres);
-
-    for(var i=0; i<listaEnlaces.length; i++){
-      httpRequest.open('GET',  listaEnlaces[i],false);
-      httpRequest.send();
-      var cons =JSON.parse(httpRequest.response);
-      dias.push(cons.data[0].dias_sin_mujeres);
-    }
-
-    var titulos = ["Total"].concat(listaMedios);
-    const data = {
-        labels: titulos,
-        datasets: [
-          {
-            label: 'Total: ',
-            backgroundColor: 'rgba(165, 76, 120, 1)',
-            barThickness: 15,
-            data: dias
-          }
-        ]
-      };
-
-    return data;
-
+    </div>);
+  }
 
 }
-
-function ObtenerDias(consulta){
+function ObtenerVariables(consulta, listaEnlaces, listaMedios) {
+  var dias = []
   var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET',  consulta,false);
-  httpRequest.send();
-  var cons =JSON.parse(httpRequest.response);
-  var dias = cons.data[0].dias_disponibles;
 
+  httpRequest.open('GET', consulta, false);
+  httpRequest.send();
+  var cons = JSON.parse(httpRequest.response);
+  dias.push(cons.data[0].dias_sin_mujeres);
+
+  for (var i = 0; i < listaEnlaces.length; i++) {
+    httpRequest.open('GET', listaEnlaces[i], false);
+    httpRequest.send();
+    var cons = JSON.parse(httpRequest.response);
+    dias.push(cons.data[0].dias_sin_mujeres);
+  }
+
+  var titulos = ["Total"].concat(listaMedios);
+  const data = {
+    labels: titulos,
+    datasets: [
+      {
+        label: 'Total: ',
+        backgroundColor: 'rgba(165, 76, 120, 1)',
+        barThickness: 15,
+        data: dias
+      }
+    ]
+  };
+
+  return data;
+
+}
+
+function ObtenerDias(consulta) {
+  var httpRequest = new XMLHttpRequest();
+  httpRequest.open('GET', consulta, false);
+  httpRequest.send();
+  var cons = JSON.parse(httpRequest.response);
+  var dias = cons.data[0].dias_disponibles;
 
   return dias;
 
-
 }
-
 
 export default GraficoDiasSinMujeres;

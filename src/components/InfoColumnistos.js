@@ -26,20 +26,22 @@ class InfoColumnistos extends Component {
 
       <div className="row m-auto justify-content-center">
 
-          <div className="form-group form-inline">
-            <p class="h4">¿Cuántas mujeres hay opinando en los medios de {this.props.pais} desde </p>
+        <div className="form-group form-inline">
+          <p class="h4">¿Cuántas mujeres hay opinando en los medios de {this.props.pais}
+            desde
+          </p>
 
-            <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {this.anio}
-              </button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                {items}
-              </div>
+          <div className="dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.anio}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+              {items}
             </div>
-
-            <p class="h4">?</p>
           </div>
+
+          <p class="h4">?</p>
+        </div>
 
       </div>
 
@@ -51,6 +53,5 @@ class InfoColumnistos extends Component {
     </div>);
   }
 }
-
 
 export default InfoColumnistos;
