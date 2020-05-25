@@ -72,6 +72,7 @@
 
 .btn:focus, .btn:active {
   color: #707070 !important;
+  background-color: transparent !important;
   outline: none !important;
   box-shadow: none !important;
 }
@@ -167,7 +168,7 @@ p{
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
-  
+
 }
 #overlayGraficoBarra{
   -webkit-filter: blur(5px);
@@ -175,7 +176,7 @@ p{
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
-  
+
 }
 #main-titleBarra {
   font-size: 30px;
@@ -183,7 +184,7 @@ p{
   letter-spacing: -1pt;
   line-height: 1em;
   text-align: center;
-  
+
   text-transform: uppercase;
 }
 #main-titleBarraSemana {
@@ -192,6 +193,6 @@ p{
   letter-spacing: -1pt;
   line-height: 1em;
   text-align: center;
-  
+
   text-transform: uppercase;
 }

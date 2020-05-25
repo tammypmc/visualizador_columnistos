@@ -6,7 +6,7 @@ import '../App.css';
 
 class Navbar extends Component {
   state = {
-    slide: '-70px', // How much should the Navbar slide up or down
+    slide: '-60px', // How much should the Navbar slide up or down
     lastScrollY: 0, // Keep track of current position in state
     date: "",
     year:""

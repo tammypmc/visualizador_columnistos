@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Chart from "chart.js";
 import classes from "./LineGraph.module.css";
+import {descargarImagen} from './utilities'
 let myLineChart;
 
 class GraficoStepLine extends Component {
@@ -17,14 +16,6 @@ class GraficoStepLine extends Component {
     componentDidUpdate() {
         this.buildChart();
     }
-
-
-    descargarImagen(id){
-        domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
-        .then(function(blob) {
-          window.saveAs(blob, id+'.png');
-        });
-      }
 
     buildChart = () => {
 
@@ -119,7 +110,7 @@ class GraficoStepLine extends Component {
     render() {
         var identificador =this.props.id;
         return (
-            <div className="App">
+            <div className="componente_stephline">
                 <div className= {identificador}>
             <div className={classes.graphContainer}>
                 <canvas
@@ -129,9 +120,9 @@ class GraficoStepLine extends Component {
             </div>
             </div>
             <br/>
-            <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
-           <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
-		</button>
+            <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
+              <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
+		       </button>
             </div>
         )
     }

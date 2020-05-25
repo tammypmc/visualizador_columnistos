@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 import '../App.css';
-import domtoimage from 'dom-to-image';
+import {descargarImagen} from './utilities'
 
 /* para llamar esta clase
          <GraficoDiasSinMujeres
@@ -16,14 +16,6 @@ class GraficoDiasSinMujeres extends Component{
         this.chartReference=React.createRef();
       }
 
-
-      descargarImagen(id){
-        domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
-        .then(function(blob) {
-          window.saveAs(blob, id+'.png');
-        });
-      }
-
       render(){
         var listaEnlaces = [];
         var enlace = this.props.enlaceMedio;
@@ -35,10 +27,8 @@ class GraficoDiasSinMujeres extends Component{
         var dias = ObtenerDias(this.props.enlaceDias);
         var identificador =this.props.id;
         return (
-            <div className="App">
-            <header className="App-header">
+            <div className="componente_sin_mujeres">
 
-            </header>
             <div className= {identificador}>
         <HorizontalBar
         data={datos}
@@ -100,7 +90,7 @@ class GraficoDiasSinMujeres extends Component{
 
         </div>
         <br/>
-        <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+        <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
                   <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
             </button>
 

@@ -1,9 +1,8 @@
-import React, {  Component } from 'react';
-import {  HorizontalBar } from 'react-chartjs-2';
+import React, {Component} from 'react';
+import {HorizontalBar} from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import '../App.css';
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
+import {descargarImagen} from './utilities'
 
 class GraficoPromedioGeneral extends Component {
 
@@ -12,37 +11,20 @@ class GraficoPromedioGeneral extends Component {
     this.chartReference = React.createRef();
   }
 
-  descargarImagen(id){
-    domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
-    .then(function(blob) {
-      window.saveAs(blob, id+'.png');
-    });
-  }
-
-
   render() {
     var datos = ObtenerPromedios(this.props.enlace);
-    var identificador =this.props.id;
+    var identificador = this.props.id;
     return (
+      <div className="componente_general" >
+      <div className = {identificador}>
 
-      <div className="App">
-            <header className="App-header">
-
-            </header>
-
-            <div className= {identificador}>
-            
-      <HorizontalBar data = {
-        datos
-      }
-      options = {
-        {
+      <HorizontalBar data={datos} options={{
           responsive: true,
           events: [],
           title: {
             display: true,
             text: this.props.titulo,
-            /* se extrae de de app el titulo del grafico*/
+            /* se extrae de de app el titulo del grafico */
             fontSize: 20
           },
           legend: {
@@ -56,23 +38,27 @@ class GraficoPromedioGeneral extends Component {
             }
           },
           scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
-              },
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                max: 100,
-                display: false
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                },
+                stacked: true,
+                ticks: {
+                  beginAtZero: true,
+                  max: 100,
+                  display: false
+                }
               }
-            }],
-            yAxes: [{
-              gridLines: {
-                display: false
-              },
-              stacked: true
-            }]
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  display: false
+                },
+                stacked: true
+              }
+            ]
           },
           plugins: {
             datalabels: {
@@ -90,23 +76,20 @@ class GraficoPromedioGeneral extends Component {
               }
             }
           }
-        }
-      }
-      />
-       </div>
-           <br/>
-           <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
-           <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
-		</button>
+        }}/>
 
-          </div>
-      
-    );
+
+    </div>
+    <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
+      <i className="icon ion-md-arrow-down"></i>
+      <span className="spn">Descargar</span>
+    </button>
+  </div>
+
+  );
   }
 
 }
-
-
 
 function ObtenerPromedios(consulta) {
   var httpRequest = new XMLHttpRequest();
@@ -136,7 +119,8 @@ function ObtenerPromedios(consulta) {
 
   const data = {
     labels: periodicos,
-    datasets: [{
+    datasets: [
+      {
         backgroundColor: 'rgba(165, 76, 120, 1)',
         barThickness: 20,
         data: porcentajes_mujeres,
@@ -146,8 +130,7 @@ function ObtenerPromedios(consulta) {
             color: '#4D4F5C'
           }
         }
-      },
-      {
+      }, {
         backgroundColor: 'rgba(220, 221, 222, 1)',
         barThickness: 20,
         data: porcentajes_hombres,
@@ -183,9 +166,5 @@ function calcularTotalRegistros(datos) {
 
   return totales;
 }
-
-
-
-
 
 export default GraficoPromedioGeneral;

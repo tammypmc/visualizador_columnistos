@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
+import {descargarImagen} from './utilities'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -12,18 +11,6 @@ class GraficoBarra extends Component {
         super(props);
         this.chartReference=React.createRef();
       }
-
-
-
-
-    descargarImagen(id){
-      domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
-      .then(function(blob) {
-        window.saveAs(blob, id+'.png');
-      });
-    }
-
-
 
       render(){
 
@@ -38,10 +25,7 @@ class GraficoBarra extends Component {
 
 
         return(
-            <div className="App">
-            <header className="App-header">
-
-            </header>
+            <div className="componente_barra">
 
             <div className= {identificador}>
 
@@ -88,7 +72,7 @@ class GraficoBarra extends Component {
 
            </div>
            <br/>
-           <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+           <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
            <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
 

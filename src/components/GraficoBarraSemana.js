@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Bar} from 'react-chartjs-2';
 import '../App.css';
-import domtoimage from 'dom-to-image';
+import {descargarImagen} from './utilities'
 
 class GraficoBarraSemana extends Component{
 
@@ -11,23 +11,13 @@ class GraficoBarraSemana extends Component{
       }
 
 
-    descargarImagen(id){
-      domtoimage.toBlob(window.document.getElementsByClassName(id)[0])
-      .then(function(blob) {
-        window.saveAs(blob, id+'.png');
-      });
-    }
-
-
       render(){
         var datos = ObtenerVariables(this.props.enlace);
         var identificador =this.props.id;
 
           return(
-            <div className="App">
-            <header className="App-header">
+            <div className="componente_barra_semana">
 
-            </header>
             <div className= {identificador}>
         <Bar
         data={datos}
@@ -79,7 +69,7 @@ class GraficoBarraSemana extends Component{
         }}/>
  </div>
   <br/>
-<button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || this.descargarImagen(identificador)}>
+<button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
            <i className="icon ion-md-arrow-down"></i> <span className="spn">Descargar</span>
 		</button>
 
@@ -95,7 +85,7 @@ function ObtenerVariables(consulta){
     httpRequest.send();
     var cons =JSON.parse(httpRequest.response);
     var datos = cons.data;
-   
+
 
     var listaDias = ["Domingo","Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
     var lis = [];
@@ -142,7 +132,7 @@ function ObtenerVariables(consulta){
     for(var y=0; y<datos.length;y++){
         datos_final[datos[y].dia] =  datos[y];
     }
- 
+
     const data = {
         labels:listaDias,
         datasets: [

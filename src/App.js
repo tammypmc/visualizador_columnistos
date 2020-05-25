@@ -9,6 +9,7 @@ import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
 
+
 const dominioAPI = "https://apicolumnistos.tedic.net/";
 const pais = "Paraguay";
 
@@ -23,6 +24,8 @@ class App extends Component {
     };
   }
 
+
+
   /* obtiene fechas y da el formato necesario para la consulta del api */
   manejoDeFechas = (fecha) => {
 
@@ -32,8 +35,8 @@ class App extends Component {
     this.setState({segundaFecha: fecha2});
     document.getElementById("overlayGraficoBarraSemana").style.display = "initial";
     document.getElementById("overlayGraficoBarra").style.display = "initial";
-    document.getElementById("main-titleBarra").style.display="none";
-    document.getElementById("main-titleBarraSemana").style.display="none";
+    document.getElementById("main-titleBarra").style.display = "none";
+    document.getElementById("main-titleBarraSemana").style.display = "none";
 
   }
   manejoDeAnio = (anio_dropdown) => {
@@ -42,8 +45,8 @@ class App extends Component {
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
     console.log(document.getElementsByTagName("bar").data);
-    document.getElementById("main-titleBarra").style.display="block";
-    document.getElementById("main-titleBarraSemana").style.display="block";
+    document.getElementById("main-titleBarra").style.display = "block";
+    document.getElementById("main-titleBarraSemana").style.display = "block";
   }
 
   render() {
@@ -69,37 +72,34 @@ class App extends Component {
       <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles} pais={pais}/>
       <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
-
       <div className="d-flex flex-column justify-content-center">
 
         <div className="row m-lg-5  justify-content-center">
           <div className="col-lg-4">
-            <div className="shadow p-3 ">
+            <div className="shadow p-3 Promedios_Generales">
               <GraficoPromedioGeneral id="graficogeneral" enlace={promediosGenerales} titulo="Promedios generales"/>
             </div>
           </div>
         </div>
 
-<div className="row  m-lg-5  justify-content-center">
-  <div className="col-lg-7">
-    <div className="shadow p-3">
-                <p id="main-titleBarra" >Debes seleccionar un rango de fechas</p>
-                <div id="overlayGraficoBarra">
+        <div className="row  m-lg-5  justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3 ">
+              <p id="main-titleBarra">Debes seleccionar un rango de fechas</p>
+              <div id="overlayGraficoBarra">
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
-                </div>
+              </div>
             </div>
           </div>
         </div>
 
-<div className="row  m-lg-5  justify-content-center">
-  <div className="col-lg-7">
-    <div className="shadow p-3 ">
-                <p id="main-titleBarraSemana" >Debes seleccionar un rango de fechas</p>
-                      <div id="overlayGraficoBarraSemana">
-                        <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
-
-                        </div>
-
+        <div className="row  m-lg-5  justify-content-center">
+          <div className="col-lg-7">
+            <div className="shadow p-3 ">
+              <p id="main-titleBarraSemana">Debes seleccionar un rango de fechas</p>
+              <div id="overlayGraficoBarraSemana">
+                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
+              </div>
             </div>
           </div>
         </div>
