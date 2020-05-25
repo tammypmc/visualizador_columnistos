@@ -8,7 +8,7 @@ import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
-
+import {ObtenerAnios} from './components/utilities'
 
 const dominioAPI = "https://apicolumnistos.tedic.net/";
 const pais = "Paraguay";
@@ -66,10 +66,12 @@ class App extends Component {
 
     var medios = ["abc", "lanacionpy", "ultimahora"];
 
+    var listaAnios = ObtenerAnios(aniosDisponibles);
+
     return (<div className="container-auto py-0">
 
-      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles}></Navbar>
-      <InfoColumnistos seleccionAnio={this.manejoDeAnio} enlaceAnios={aniosDisponibles} pais={pais}/>
+      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} listaAnios= {listaAnios}></Navbar>
+      <InfoColumnistos seleccionAnio={this.manejoDeAnio} listaAnios={listaAnios} pais={pais}/>
       <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
       <div className="d-flex flex-column justify-content-center">
@@ -107,7 +109,7 @@ class App extends Component {
         <div className="row  m-lg-5 justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3">
-              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por medio?"/>
+              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periodico?"/>
             </div>
           </div>
         </div>

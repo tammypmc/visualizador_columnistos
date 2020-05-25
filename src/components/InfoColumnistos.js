@@ -13,7 +13,7 @@ class InfoColumnistos extends Component {
 
   render() {
 
-    var listaAnios = ObtenerVariables(this.props.enlaceAnios);
+    var listaAnios = this.props.listaAnios;
     var items = [];
     for (var i = 0; i < listaAnios.length; i++) {
       items.push(<button className="dropdown-item" id={listaAnios[i]} type="button" onClick={this.handleId}>{listaAnios[i]}</button>);
@@ -52,17 +52,5 @@ class InfoColumnistos extends Component {
   }
 }
 
-function ObtenerVariables(consulta) {
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', consulta, false);
-  httpRequest.send();
-  var cons = JSON.parse(httpRequest.response);
-  var listaAnios = [];
-  for (var i = 0; i < cons.data.length; i++) {
-    listaAnios.push(cons.data[i].anios);
-  }
-
-  return listaAnios;
-}
 
 export default InfoColumnistos;

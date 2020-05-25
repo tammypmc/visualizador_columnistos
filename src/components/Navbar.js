@@ -73,7 +73,7 @@ handleYear = (Year) => {        /*envia a app.js el rango de fechas seleccionada
               Fecha
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <DropdownDates obtenerFecha={this.handleDate}  obtenerAnio={this.handleYear}  enlaceAnios= {this.props.enlaceAnios}/>
+              <DropdownDates obtenerFecha={this.handleDate}  obtenerAnio={this.handleYear}  listaAnios= {this.props.listaAnios}/>
 
 
             </div>

@@ -28,7 +28,7 @@ class DropdownDates extends Component {
 
   render() {
 
-    var listaAnios = ObtenerVariables(this.props.enlaceAnios);
+    var listaAnios =  this.props.listaAnios;
     var items = [];
     for (var i=0; i<listaAnios.length; i++){
       items.push(<button type="button"  id={listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{listaAnios[i]}</button>)
@@ -82,17 +82,5 @@ class DropdownDates extends Component {
   }
 }
 
-function ObtenerVariables(enlace){
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', enlace,false);
-  httpRequest.send();
-  var cons =JSON.parse(httpRequest.response);
-  var listaAnios = [];
-  for (var i=0; i<cons.data.length; i++){
-      listaAnios.push(cons.data[i].anios);
-  }
-
-  return listaAnios;
-}
 
 export default DropdownDates;
