@@ -92,58 +92,62 @@ class GraficoPromedioGeneral extends Component {
   }
 
   ObtenerPromedios(consulta) {
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', consulta, false);
-    httpRequest.send();
-    var cons = JSON.parse(httpRequest.response);
-    var datos = cons.data;
-    var periodicos = [];
-    var porcentajes_mujeres = [];
-    var porcentajes_hombres = [];
+    fetch(consulta)
+          .then(res => res.json())
+          .then(
+            (result) => {
+              var datos = result.data;
 
-    var totalRegistros = this.calcularTotalRegistros(datos);
+              var periodicos = [];
+              var porcentajes_mujeres = [];
+              var porcentajes_hombres = [];
 
-    var totalGeneral = (totalRegistros[1] * 100) / totalRegistros[0];
-    periodicos.push("Total");
-    porcentajes_mujeres.push(totalGeneral.toFixed());
+              var totalRegistros = this.calcularTotalRegistros(datos);
 
-    for (var i = 0; i < datos.length; i++) {
-      var total = (datos[i].articulos_mujeres * 100) / (datos[i].articulos_mujeres + datos[i].articulos_hombres);
-      porcentajes_mujeres.push(total.toFixed());
-      periodicos.push(datos[i].site)
-    }
+              var totalGeneral = (totalRegistros[1] * 100) / totalRegistros[0];
+              periodicos.push("Total");
+              porcentajes_mujeres.push(totalGeneral.toFixed());
 
-    for (var i = 0; i < porcentajes_mujeres.length; i++) {
-      porcentajes_hombres.push(100 - porcentajes_mujeres[i])
-    }
+              for (var i = 0; i < datos.length; i++) {
+                var total = (datos[i].articulos_mujeres * 100) / (datos[i].articulos_mujeres + datos[i].articulos_hombres);
+                porcentajes_mujeres.push(total.toFixed());
+                periodicos.push(datos[i].site)
+              }
 
-    const data = {
-      labels: periodicos,
-      datasets: [
-        {
-          backgroundColor: 'rgba(165, 76, 120, 1)',
-          barThickness: 20,
-          data: porcentajes_mujeres,
-          datalabels: {
-            labels: {
+              for (var i = 0; i < porcentajes_mujeres.length; i++) {
+                porcentajes_hombres.push(100 - porcentajes_mujeres[i])
+              }
 
-              color: '#4D4F5C'
+              const data = {
+                labels: periodicos,
+                datasets: [
+                  {
+                    backgroundColor: 'rgba(165, 76, 120, 1)',
+                    barThickness: 20,
+                    data: porcentajes_mujeres,
+                    datalabels: {
+                      labels: {
+
+                        color: '#4D4F5C'
+                      }
+                    }
+                  }, {
+                    backgroundColor: 'rgba(220, 221, 222, 1)',
+                    barThickness: 20,
+                    data: porcentajes_hombres,
+                    datalabels: {
+                      labels: {
+                        title: null
+                      }
+                    }
+                  }
+                ]
+              };
+
+              this.setState({data: data});
+
             }
-          }
-        }, {
-          backgroundColor: 'rgba(220, 221, 222, 1)',
-          barThickness: 20,
-          data: porcentajes_hombres,
-          datalabels: {
-            labels: {
-              title: null
-            }
-          }
-        }
-      ]
-    };
-
-    this.setState({data: data});
+          )
   }
 
   calcularTotalRegistros(datos) {

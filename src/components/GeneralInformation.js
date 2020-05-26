@@ -7,34 +7,39 @@ class GeneralInformation extends Component {
     super(props);
 
     this.state = {
-      info: []
+      notas:0,
+      autores: 0,
+      tiempo:0,
+      medios:0
     };
   }
 
   componentDidMount() {
     this.ObtenerVariables(this.props.enlace1, this.props.enlace2, this.props.enlace3, this.props.enlace4);
+    
   }
 
   render() {
-    return (<div className="d-flex flex-row justify-content-center mb-5">
+    return (
+      <div className="d-flex flex-row justify-content-center mb-5">
       <ul className="list-group list-group-horizontal-sm shadow bg-white rounded">
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[0]}</b>
+          <b>{this.state.notas}</b>
           <br></br>
           Notas recolectadas
         </li>
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[1]}</b>
+          <b>{this.state.autores}</b>
           <br></br>
           Autores/as recolectados
         </li>
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[2]} meses</b>
+          <b>{this.state.tiempo} meses</b>
           <br></br>
           Tiempo de observación
         </li>
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[3]} medios</b>
+          <b>{this.state.medios} medios</b>
           <br></br>
           Plataformas en observación
         </li>
@@ -43,31 +48,20 @@ class GeneralInformation extends Component {
   }
 
   ObtenerVariables(consulta1, consulta2, consulta3, consulta4) {
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', consulta1, false);
-    httpRequest.send();
-    var cons1 = JSON.parse(httpRequest.response);
-    var cantArticulos = cons1.data[0].cantidad_articulos;
-
-    httpRequest.open('GET', consulta2, false);
-    httpRequest.send();
-    var cons2 = JSON.parse(httpRequest.response);
-    var cantAutores = cons2.data[0].cant_autores;
-
-    httpRequest.open('GET', consulta3, false);
-    httpRequest.send();
-    var cons3 = JSON.parse(httpRequest.response);
-    var cantMeses = cons3.data[0].Meses;
-
-    httpRequest.open('GET', consulta4, false);
-    httpRequest.send();
-    var cons4 = JSON.parse(httpRequest.response);
-    var cantMedios = cons4.data[0].medios;
-
-    this.setState({
-      info: [cantArticulos, cantAutores, cantMeses, cantMedios]
-    })
-  }
+    Promise.all([
+            fetch(consulta1),
+            fetch(consulta2),
+            fetch(consulta3),
+            fetch(consulta4)
+        ])
+        .then(([res1, res2, res3, res4]) => Promise.all([res1.json(), res2.json(),res3.json(), res4.json()]))
+        .then(([data1, data2, data3, data4]) => this.setState({
+            notas: data1.data[0].cantidad_articulos,
+            autores: data2.data[0].cant_autores,
+            tiempo: data3.data[0].Meses,
+            medios: data4.data[0].medios
+        }));
+    }
 
 }
 

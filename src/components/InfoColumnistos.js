@@ -33,13 +33,13 @@ class InfoColumnistos extends Component {
 
     return (<div className="container p-3">
       <div className="row m-auto justify-content-center">
-        <p class="h1">ColumnistOS</p>
+        <p className="h1">ColumnistOS</p>
       </div>
 
       <div className="row m-auto justify-content-center">
 
         <div className="form-group form-inline">
-          <p class="h4">¿Cuántas mujeres hay opinando en los medios de  {this.props.pais}
+          <p className="h4">¿Cuántas mujeres hay opinando en los medios de  {this.props.pais}
             desde
           </p>
 
@@ -52,14 +52,14 @@ class InfoColumnistos extends Component {
             </div>
           </div>
 
-          <p class="h4">?</p>
+          <p className="h4">?</p>
         </div>
 
       </div>
 
       <div className="row justify-content-center">
         <div className="col-lg-10">
-          <p class="h6 text-justify">Bot Colmunistos es un programa informático que recorre las secciones de opinión de los sitios Web de medios paraguayos. En su recorrido, recoge todos los artículos publicados solo en esas secciones y arma una base de datos. El programa trata de identificar qué artículos son escritos por mujeres y cuáles por hombres. Cuando no logra diferenciar, porque el nombre es neutro o por algún otro motivo, envía un mensaje a alguien de TEDIC que “le da una mano” para decidir. El bot fue desarrollado por Economía Feminista, una organización amiga de Argentina. Los programadores de TEDIC se encargaron de adaptarlo para que funcione con los medios de difusión de Paraguay.</p>
+          <p className="h6 text-justify">Bot Colmunistos es un programa informático que recorre las secciones de opinión de los sitios Web de medios paraguayos. En su recorrido, recoge todos los artículos publicados solo en esas secciones y arma una base de datos. El programa trata de identificar qué artículos son escritos por mujeres y cuáles por hombres. Cuando no logra diferenciar, porque el nombre es neutro o por algún otro motivo, envía un mensaje a alguien de TEDIC que “le da una mano” para decidir. El bot fue desarrollado por Economía Feminista, una organización amiga de Argentina. Los programadores de TEDIC se encargaron de adaptarlo para que funcione con los medios de difusión de Paraguay.</p>
         </div>
       </div>
     </div>);
