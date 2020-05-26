@@ -10,29 +10,32 @@ class DropdownDates extends Component {
   constructor(props) {
     super(props);
     this.state = {date: new Date()};
+    this.items = [];
+    this.listaAnios = this.props.listaAnios;
   }
 
 
   /* envia al componente navbar el rango de fechas*/
    onChange = date => {
       this.props.obtenerFecha(date);
-
- };
+   };
 
 
  handleId = (e) => {
   this.props.obtenerAnio(e.target.id);
-  
+
+}
+
+componentDidMount(){
+
+    for (var i=0; i<this.listaAnios.length; i++){
+      this.items.push(<button type="button"  id={this.listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{this.listaAnios[i]}</button>)
+    }
+
 }
 
 
   render() {
-
-    var listaAnios =  this.props.listaAnios;
-    var items = [];
-    for (var i=0; i<listaAnios.length; i++){
-      items.push(<button type="button"  id={listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{listaAnios[i]}</button>)
-    }
     return (
     <div className="container">
 
@@ -46,7 +49,7 @@ class DropdownDates extends Component {
 
       <div className="row pl-2">
         <div className="btn-group" role="group" aria-label="Basic example">
-          {items}
+          {this.items}
         </div>
 
       </div>
@@ -80,6 +83,9 @@ class DropdownDates extends Component {
 
     );
   }
+
+
+
 }
 
 

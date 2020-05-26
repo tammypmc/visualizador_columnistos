@@ -12,19 +12,29 @@ import {ObtenerAnios} from './components/utilities'
 
 const dominioAPI = "https://apicolumnistos.tedic.net/";
 const pais = "Paraguay";
+const aniosDisponibles = dominioAPI + "api/anios_disponibles";
+const artDisponibles = dominioAPI + "api/cantidad_articulos";
+const autoresDisponibles = dominioAPI + "api/total_autores";
+const mesesDisponibles = dominioAPI + "api/cantidad_meses";
+const mediosDisponibles = dominioAPI + "api/cantidad_medios";
+const promediosGenerales = dominioAPI + "api/periodicos";
+const diasSinMujeres = dominioAPI + "api/dias_sin_mujeres";
+const diasDisponibles = dominioAPI + "api/dias_disponibles";
+const diasSinMujeresPorMedio = dominioAPI + "api/dias_sin_mujeres_medio/";
+const medios = ["abc", "lanacionpy", "ultimahora"];
 
 class App extends Component {
 
+
   constructor(props) {
     super(props);
+    this.listaAnios =  ObtenerAnios(aniosDisponibles);
     this.state = {
       primerFecha: "2020-05-04",
       segundaFecha: "2020-05-10",
       anio: "2020"
     };
   }
-
-
 
   /* obtiene fechas y da el formato necesario para la consulta del api */
   manejoDeFechas = (fecha) => {
@@ -49,29 +59,18 @@ class App extends Component {
     document.getElementById("main-titleBarraSemana").style.display = "block";
   }
 
+
   render() {
-    var aniosDisponibles = dominioAPI + "api/anios_disponibles";
-    var artDisponibles = dominioAPI + "api/cantidad_articulos";
-    var autoresDisponibles = dominioAPI + "api/total_autores";
-    var mesesDisponibles = dominioAPI + "api/cantidad_meses";
-    var mediosDisponibles = dominioAPI + "api/cantidad_medios";
-    var promediosGenerales = dominioAPI + "api/periodicos";
     var graficoSemanaPeriodico = dominioAPI + "api/distribucion_semana_periodico_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var graficoSemana = dominioAPI + "api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var distribucionMesAnio = dominioAPI + "api/distribucion_mes_anio/" + this.state.anio;
     var distribucionSemanaAnio = dominioAPI + "api/distribucion_semana_anio/" + this.state.anio;
-    var diasSinMujeres = dominioAPI + "api/dias_sin_mujeres";
-    var diasDisponibles = dominioAPI + "api/dias_disponibles";
-    var diasSinMujeresPorMedio = dominioAPI + "api/dias_sin_mujeres_medio/";
 
-    var medios = ["abc", "lanacionpy", "ultimahora"];
-
-    var listaAnios = ObtenerAnios(aniosDisponibles);
 
     return (<div className="container-auto py-0">
 
-      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} listaAnios= {listaAnios}></Navbar>
-      <InfoColumnistos seleccionAnio={this.manejoDeAnio} listaAnios={listaAnios} pais={pais}/>
+      <Navbar seleccionFecha={this.manejoDeFechas} seleccionAnio={this.manejoDeAnio} listaAnios= {this.listaAnios}></Navbar>
+      <InfoColumnistos seleccionAnio={this.manejoDeAnio} listaAnios={this.listaAnios} pais={pais}/>
       <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
 
       <div className="d-flex flex-column justify-content-center">

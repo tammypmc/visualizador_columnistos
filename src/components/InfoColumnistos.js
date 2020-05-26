@@ -5,18 +5,30 @@ class InfoColumnistos extends Component {
   constructor(props) {
     super(props);
     this.anio = 2020;
+
+    this.listaAnios = this.props.listaAnios;
   }
+
   handleId = (e) => {
     this.props.seleccionAnio(e.target.id);
     this.anio = e.target.id;
   }
 
-  render() {
 
-    var listaAnios = this.props.listaAnios;
+  /*componentDidMount() {
+    for (var i = 0; i < this.listaAnios.length; i++) {
+      this.items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId}>{this.listaAnios[i]}</button>);
+    }
+  }*/
+
+
+
+  render() {
     var items = [];
-    for (var i = 0; i < listaAnios.length; i++) {
-      items.push(<button className="dropdown-item" id={listaAnios[i]} type="button" onClick={this.handleId}>{listaAnios[i]}</button>);
+    console.log(this.listaAnios.length);
+    for (var i = 0; i < this.listaAnios.length; i++) {
+      items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId}>{this.listaAnios[i]}</button>);
+
     }
 
     return (<div className="container p-3">
@@ -27,12 +39,12 @@ class InfoColumnistos extends Component {
       <div className="row m-auto justify-content-center">
 
         <div className="form-group form-inline">
-          <p class="h4">¿Cuántas mujeres hay opinando en los medios de {this.props.pais}
+          <p class="h4">¿Cuántas mujeres hay opinando en los medios de  {this.props.pais}
             desde
           </p>
 
           <div className="dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               {this.anio}
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -52,6 +64,8 @@ class InfoColumnistos extends Component {
       </div>
     </div>);
   }
+
+
 }
 
 export default InfoColumnistos;
