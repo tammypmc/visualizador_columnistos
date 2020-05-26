@@ -29,14 +29,12 @@ class GeneralInformation extends Component {
           Autores/as recolectados
         </li>
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[2]}
-            meses</b>
+          <b>{this.state.info[2]} meses</b>
           <br></br>
           Tiempo de observación
         </li>
         <li className="list-group-item text-secondary border-right-0">
-          <b>{this.state.info[3]}
-            medios</b>
+          <b>{this.state.info[3]} medios</b>
           <br></br>
           Plataformas en observación
         </li>

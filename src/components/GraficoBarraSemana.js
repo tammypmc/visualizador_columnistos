@@ -17,6 +17,13 @@ class GraficoBarraSemana extends Component {
     this.ObtenerVariables(this.props.enlace);
   }
 
+  componentDidUpdate(prevState) {
+    if (prevState.data !== this.state.data) {
+      //console.log(prevState.data);
+     //console.log(this.state.data);
+    }
+  }
+
   render() {
     var identificador = this.props.id;
 
