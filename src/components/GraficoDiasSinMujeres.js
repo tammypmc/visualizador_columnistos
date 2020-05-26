@@ -14,22 +14,29 @@ class GraficoDiasSinMujeres extends Component {
   constructor(props) {
     super(props);
     this.chartReference = React.createRef();
+    this.state = {
+      data: [],
+      dias: this.ObtenerDias(this.props.enlaceDias)
+    };
   }
 
-  render() {
+  componentDidMount() {
     var listaEnlaces = [];
     var enlace = this.props.enlaceMedio;
     for (var i = 0; i < this.props.listaMedios.length; i++) {
       listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
     }
+    var datos = this.ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
+    this.setState({data: datos});
+  }
 
-    var datos = ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
-    var dias = ObtenerDias(this.props.enlaceDias);
+  render() {
+
     var identificador = this.props.id;
     return (<div className="componente_sin_mujeres">
 
       <div className={identificador}>
-        <HorizontalBar data={datos} options={{
+        <HorizontalBar data={this.state.data} options={{
             events: [],
             title: {
               display: true,
@@ -59,7 +66,7 @@ class GraficoDiasSinMujeres extends Component {
                   ticks: {
                     beginAtZero: true,
                     stepSize: 50,
-                    max: dias
+                    max: this.state.dias
                   }
                 }
               ],
@@ -99,50 +106,50 @@ class GraficoDiasSinMujeres extends Component {
 
     </div>);
   }
-
-}
-function ObtenerVariables(consulta, listaEnlaces, listaMedios) {
-  var dias = []
-  var httpRequest = new XMLHttpRequest();
-
-  httpRequest.open('GET', consulta, false);
-  httpRequest.send();
-  var cons = JSON.parse(httpRequest.response);
-  dias.push(cons.data[0].dias_sin_mujeres);
-
-  for (var i = 0; i < listaEnlaces.length; i++) {
-    httpRequest.open('GET', listaEnlaces[i], false);
+  ObtenerVariables(consulta, listaEnlaces, listaMedios) {
+    var dias = []
+    var httpRequest = new XMLHttpRequest();
+  
+    httpRequest.open('GET', consulta, false);
     httpRequest.send();
     var cons = JSON.parse(httpRequest.response);
     dias.push(cons.data[0].dias_sin_mujeres);
+  
+    for (var i = 0; i < listaEnlaces.length; i++) {
+      httpRequest.open('GET', listaEnlaces[i], false);
+      httpRequest.send();
+      var cons = JSON.parse(httpRequest.response);
+      dias.push(cons.data[0].dias_sin_mujeres);
+    }
+  
+    var titulos = ["Total"].concat(listaMedios);
+    const data = {
+      labels: titulos,
+      datasets: [
+        {
+          label: 'Total: ',
+          backgroundColor: 'rgba(165, 76, 120, 1)',
+          barThickness: 15,
+          data: dias
+        }
+      ]
+    };
+  
+    return data;
+  
+  }
+  
+  ObtenerDias(consulta) {
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', consulta, false);
+    httpRequest.send();
+    var cons = JSON.parse(httpRequest.response);
+    var dias = cons.data[0].dias_disponibles;
+  
+    return dias;
   }
 
-  var titulos = ["Total"].concat(listaMedios);
-  const data = {
-    labels: titulos,
-    datasets: [
-      {
-        label: 'Total: ',
-        backgroundColor: 'rgba(165, 76, 120, 1)',
-        barThickness: 15,
-        data: dias
-      }
-    ]
-  };
-
-  return data;
-
 }
 
-function ObtenerDias(consulta) {
-  var httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', consulta, false);
-  httpRequest.send();
-  var cons = JSON.parse(httpRequest.response);
-  var dias = cons.data[0].dias_disponibles;
-
-  return dias;
-
-}
 
 export default GraficoDiasSinMujeres;
