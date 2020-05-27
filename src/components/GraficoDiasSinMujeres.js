@@ -99,7 +99,7 @@ class GraficoDiasSinMujeres extends Component {
 
       </div>
       <br/>
-
+      
       <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>

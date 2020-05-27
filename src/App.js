@@ -98,7 +98,7 @@ class App extends Component {
             <div className="shadow p-3 ">
               <p id="main-titleBarraSemana">Debes seleccionar un rango de fechas</p>
               <div id="overlayGraficoBarraSemana">
-                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana por medio?"/>
+                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
               </div>
             </div>
           </div>
@@ -107,7 +107,7 @@ class App extends Component {
         <div className="row  m-lg-5 justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3">
-              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periodico?"/>
+              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periódico?"/>
             </div>
           </div>
         </div>
