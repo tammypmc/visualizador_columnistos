@@ -5,7 +5,6 @@ class InfoColumnistos extends Component {
   constructor(props) {
     super(props);
     this.anio = 2020;
-
     this.listaAnios = this.props.listaAnios;
   }
 
@@ -14,21 +13,10 @@ class InfoColumnistos extends Component {
     this.anio = e.target.id;
   }
 
-
-  /*componentDidMount() {
-    for (var i = 0; i < this.listaAnios.length; i++) {
-      this.items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId}>{this.listaAnios[i]}</button>);
-    }
-  }*/
-
-
-
   render() {
     var items = [];
-    console.log(this.listaAnios.length);
     for (var i = 0; i < this.listaAnios.length; i++) {
       items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId}>{this.listaAnios[i]}</button>);
-
     }
 
     return (<div className="container p-3">
@@ -39,9 +27,7 @@ class InfoColumnistos extends Component {
       <div className="row m-auto justify-content-center">
 
         <div className="form-group form-inline">
-          <p className="h4">¿Cuántas mujeres hay opinando en los medios de  {this.props.pais}
-            desde
-          </p>
+          <p className="h4">¿Cuántas mujeres hay opinando en los medios de {this.props.pais} desde </p>
 
           <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -52,7 +38,7 @@ class InfoColumnistos extends Component {
             </div>
           </div>
 
-          <p className="h4">?</p>
+          <p className="h4"> ?</p>
         </div>
 
       </div>

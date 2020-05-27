@@ -54,7 +54,6 @@ class App extends Component {
     this.setState({anio: anio_dropdown});
     document.getElementById("overlayGraficoBarraSemana").style.display = "block";
     document.getElementById("overlayGraficoBarra").style.display = "block";
-    console.log(document.getElementsByTagName("bar").data);
     document.getElementById("main-titleBarra").style.display = "block";
     document.getElementById("main-titleBarraSemana").style.display = "block";
   }

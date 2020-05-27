@@ -16,14 +16,17 @@ class GraficoBarra extends Component {
 
   componentDidMount() {
   this.ObtenerVariables(this.props.enlace);/* retorna los datos dado el api */
-
-
   }
+
+  componentDidUpdate(prevProps, prevState) {
+  if (prevProps.data !== this.props) {
+    this.ObtenerVariables(this.props.enlace)
+  }
+}
 
   /* obtiene la consulta, divide en 3 listas el resultado de la consulta entre el nombre del periodico, los meses o semana
   y el porcentaje de cada uno,crea el dataset, le asigna los colores y divide los valores de cada barra */
   ObtenerVariables(consulta) {
-
     fetch(consulta)
           .then(res => res.json())
           .then(
@@ -38,7 +41,6 @@ class GraficoBarra extends Component {
                 for (var key in periodico[y]) {
                   if (key === "site") {
                     lista_periodico.push(periodico[y][key]);
-
                   } else if (llave.includes(key) === false) {
                     llave.push(key);
                     valor.push(parseInt(periodico[y][key]));

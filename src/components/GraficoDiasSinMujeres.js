@@ -99,6 +99,7 @@ class GraficoDiasSinMujeres extends Component {
 
       </div>
       <br/>
+
       <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
@@ -109,19 +110,19 @@ class GraficoDiasSinMujeres extends Component {
   ObtenerVariables(consulta, listaEnlaces, listaMedios) {
     var dias = []
     var httpRequest = new XMLHttpRequest();
-  
+
     httpRequest.open('GET', consulta, false);
     httpRequest.send();
     var cons = JSON.parse(httpRequest.response);
     dias.push(cons.data[0].dias_sin_mujeres);
-  
+
     for (var i = 0; i < listaEnlaces.length; i++) {
       httpRequest.open('GET', listaEnlaces[i], false);
       httpRequest.send();
       var cons = JSON.parse(httpRequest.response);
       dias.push(cons.data[0].dias_sin_mujeres);
     }
-  
+
     var titulos = ["Total"].concat(listaMedios);
     const data = {
       labels: titulos,
@@ -134,18 +135,18 @@ class GraficoDiasSinMujeres extends Component {
         }
       ]
     };
-  
+
     return data;
-  
+
   }
-  
+
   ObtenerDias(consulta) {
     var httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', consulta, false);
     httpRequest.send();
     var cons = JSON.parse(httpRequest.response);
     var dias = cons.data[0].dias_disponibles;
-  
+
     return dias;
   }
 

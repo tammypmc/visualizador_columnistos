@@ -122,16 +122,17 @@ class GraficoPromedioGeneral extends Component {
                 labels: periodicos,
                 datasets: [
                   {
+                    label : 'mujeres',
                     backgroundColor: 'rgba(165, 76, 120, 1)',
                     barThickness: 20,
                     data: porcentajes_mujeres,
                     datalabels: {
                       labels: {
-
                         color: '#4D4F5C'
                       }
                     }
                   }, {
+                    label : 'hombres',
                     backgroundColor: 'rgba(220, 221, 222, 1)',
                     barThickness: 20,
                     data: porcentajes_hombres,
@@ -145,7 +146,6 @@ class GraficoPromedioGeneral extends Component {
               };
 
               this.setState({data: data});
-
             }
           )
   }
@@ -162,7 +162,6 @@ class GraficoPromedioGeneral extends Component {
       totalH += datos[i].articulos_hombres;
 
       totalM += datos[i].articulos_mujeres;
-
     }
     totales.push(total);
     totales.push(totalM);

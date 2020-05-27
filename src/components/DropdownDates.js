@@ -21,30 +21,24 @@ class DropdownDates extends Component {
    };
 
 
- handleId = (e) => {
-  this.props.obtenerAnio(e.target.id);
+   handleId = (e) => {
+    this.props.obtenerAnio(e.target.id);
 
-}
+   }
 
-componentDidMount(){
-
-    for (var i=0; i<this.listaAnios.length; i++){
-      this.items.push(<button type="button"  id={this.listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{this.listaAnios[i]}</button>)
-    }
-
-}
+  componentDidMount(){
+      for (var i=0; i<this.listaAnios.length; i++){
+        this.items.push(<button type="button"  id={this.listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} >{this.listaAnios[i]}</button>)
+      }
+  }
 
 
   render() {
     return (
     <div className="container">
 
-      <div className="row pl-2">
-
-        <div className="custom-control custom-radio ">
-          <input type="radio" className="custom-control-input" id="selectorAnioRadioButton" name="defaultExampleRadios"/>
-          <label className="custom-control-label" htmlFor="defaultUnchecked">Seleccionar año</label>
-        </div>
+      <div className="row p-2 pl-3 justify-content-left">
+        <p className = "h6"s>Seleccionar año</p>
       </div>
 
       <div className="row pl-2">
@@ -57,12 +51,8 @@ componentDidMount(){
 
       <hr/>
 
-      <div className="row pl-2">
-
-        <div className="custom-control custom-radio">
-          <input type="radio" className="custom-control-input" id="selectorRangoRadioButton" name="defaultExampleRadios"/>
-          <label className="custom-control-label" htmlFor="defaultUnchecked">Seleccionar rango</label>
-        </div>
+      <div className="row p-2 pl-3  justify-content-left">
+        <p className = "h6">Seleccionar fecha</p>
       </div>
 
       <div className="row pl-2">

@@ -22,17 +22,12 @@ class Navbar extends Component {
   handleScroll = () => {
     const {lastScrollY} = this.state;
     const currentScrollY = window.scrollY;
-
-    if (lastScrollY < 600) {
-
-      //console.log(currentScrollY);
+    console.log(currentScrollY);
+    if (lastScrollY < 300) {
       this.setState({slide: '-60px'});
     } else {
-
-      //console.log(currentScrollY);
       this.setState({slide: '0px'});
     }
-
     this.setState({lastScrollY: currentScrollY});
   };
 

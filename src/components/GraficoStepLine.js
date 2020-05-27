@@ -7,111 +7,130 @@ let myLineChart;
 
 class GraficoStepLine extends Component {
 
-  chartRef = React.createRef();
+  constructor(props) {
+    super(props);
+    this.chartRef = React.createRef();
+    this.state = {
+      data: []
+    };
+  }
+
 
   componentDidMount() {
-    this.buildChart();
+    this.obtenerInformacion(this.props.enlace);
   }
 
-  componentDidUpdate() {
-    this.buildChart();
+  componentDidUpdate(prevProps, prevState) {
+  if (prevProps.data !== this.props) {
+    this.obtenerInformacion(this.props.enlace)
   }
+}
 
-  buildChart = () => {
 
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', this.props.enlace, false);
-    httpRequest.send();
-    var datos = JSON.parse(httpRequest.response);
-    var lista_datos = [];
-    var semana = [];
-    var porcentaje = [];
 
-    for (let index = 0; index < datos.data.length; index++) {
-      for (var key in datos.data[index]) {
-        if (key === "semana") {
-          semana.push(datos.data[index][key]);
-        }
-        if (key === "porcentaje") {
-          porcentaje.push(datos.data[index][key]);
-        }
 
-      }
+  obtenerInformacion(enlace){
+    fetch(enlace)
+      .then(res => res.json())
+      .then(
+        (result) => {
+            var datos = result.data;
+            var lista_datos = [];
+            var semana = [];
+            var porcentaje = [];
 
-    }
+            for (let index = 0; index < datos.length; index++) {
+              for (var key in datos[index]) {
+                if (key === "semana") {
+                  semana.push(datos[index][key]);
+                }
+                if (key === "porcentaje") {
+                  porcentaje.push(datos[index][key]);
+                }
 
-    const myChartRef = this.chartRef.current.getContext("2d");
-    const {data, average, labels} = this.props;
-
-    if (typeof myLineChart !== "undefined")
-      myLineChart.destroy();
-
-    myLineChart = new Chart(myChartRef, {
-      type: "line",
-      data: {
-        labels: semana,
-        datasets: [
-          {
-            label: "Porcentaje de mujeres",
-            steppedLine: true,
-            data: porcentaje,
-            borderColor: '#495867',
-            fill: false
-          }
-        ]
-      },
-      options: {
-        elements: {
-          point: {
-            radius: 0
-          }
-        },
-        responsive: true,
-        title: {
-          display: true,
-          text: '¿Cómo se distribuye por semana?',
-          fontSize: 20
-        },
-        legend: {
-          display: true,
-          position: 'top',
-          labels: {
-            boxWidth: 20
-          }
-        },
-        plugins: {
-          datalabels: {
-            display: false
-          }
-        },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                drawOnChartArea: true,
-                categorySpacing: 0
               }
+
             }
-          ],
-          yAxes: [
-            {
-              display: true,
-              gridLines: {
-                display: true,
-                drawOnChartArea: true
+
+            const myChartRef = this.chartRef.current.getContext("2d");
+            const {data, average, labels} = this.props;
+
+            if (typeof myLineChart !== "undefined")
+              myLineChart.destroy();
+
+            myLineChart = new Chart(myChartRef, {
+              type: "line",
+              data: {
+                labels: semana,
+                datasets: [
+                  {
+                    label: "Porcentaje de mujeres",
+                    steppedLine: true,
+                    data: porcentaje,
+                    borderColor: '#495867',
+                    fill: false
+                  }
+                ]
               },
-              ticks: {
-                beginAtZero: true,
-                stepSize: 25,
-                max: 50
+              options: {
+                elements: {
+                  point: {
+                    radius: 0
+                  }
+                },
+                responsive: true,
+                title: {
+                  display: true,
+                  text: '¿Cómo se distribuye por semana?',
+                  fontSize: 20
+                },
+                legend: {
+                  display: true,
+                  position: 'top',
+                  labels: {
+                    boxWidth: 20
+                  }
+                },
+                plugins: {
+                  datalabels: {
+                    display: false
+                  }
+                },
+                scales: {
+                  xAxes: [
+                    {
+                      gridLines: {
+                        drawOnChartArea: true,
+                        categorySpacing: 0
+                      }
+                    }
+                  ],
+                  yAxes: [
+                    {
+                      display: true,
+                      gridLines: {
+                        display: true,
+                        drawOnChartArea: true
+                      },
+                      ticks: {
+                        beginAtZero: true,
+                        stepSize: 25,
+                        max: 50
+                      }
+                    }
+                  ]
+                }
               }
-            }
-          ]
-        }
-      }
-    });
+            });
+
+        })
 
   }
+
+
+
+
+
 
   render() {
     var identificador = this.props.id;
