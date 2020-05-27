@@ -15,6 +15,7 @@ class GraficoDiasSinMujeres extends Component {
     super(props);
     this.chartReference = React.createRef();
     this.state = {
+      temp: 0,
       data: [],
       dias: this.ObtenerDias(this.props.enlaceDias)
     };
@@ -99,7 +100,6 @@ class GraficoDiasSinMujeres extends Component {
 
       </div>
       <br/>
-      
       <button role="button" className="btn btn-outline-secondary btn-sm  btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
@@ -107,23 +107,46 @@ class GraficoDiasSinMujeres extends Component {
 
     </div>);
   }
+
   ObtenerVariables(consulta, listaEnlaces, listaMedios) {
     var dias = []
     var httpRequest = new XMLHttpRequest();
-
-    httpRequest.open('GET', consulta, false);
+  
+   /* httpRequest.open('GET', consulta, false);
     httpRequest.send();
     var cons = JSON.parse(httpRequest.response);
     dias.push(cons.data[0].dias_sin_mujeres);
+    console.log(cons.data);*/
 
+    fetch(consulta)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          return dias.push(result.data[0].dias_sin_mujeres);
+        }
+      )
+      //console.log(dias);
+
+  
     for (var i = 0; i < listaEnlaces.length; i++) {
-      httpRequest.open('GET', listaEnlaces[i], false);
+      /*httpRequest.open('GET', listaEnlaces[i], false);
       httpRequest.send();
       var cons = JSON.parse(httpRequest.response);
-      dias.push(cons.data[0].dias_sin_mujeres);
+      dias.push(cons.data[0].dias_sin_mujeres);*/
+
+      fetch(listaEnlaces[i])
+      .then(res => res.json())
+      .then(
+        (result) => {
+          return dias.push(result.data[0].dias_sin_mujeres);
+        }
+      )
     }
 
+    var lista = dias;
+  console.log("dias", lista);
     var titulos = ["Total"].concat(listaMedios);
+    console.log(dias);
     const data = {
       labels: titulos,
       datasets: [
@@ -131,22 +154,22 @@ class GraficoDiasSinMujeres extends Component {
           label: 'Total: ',
           backgroundColor: 'rgba(165, 76, 120, 1)',
           barThickness: 15,
-          data: dias
+          data: lista
         }
       ]
     };
-
+  
     return data;
-
+  
   }
-
+  
   ObtenerDias(consulta) {
     var httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', consulta, false);
     httpRequest.send();
     var cons = JSON.parse(httpRequest.response);
     var dias = cons.data[0].dias_disponibles;
-
+  
     return dias;
   }
 
