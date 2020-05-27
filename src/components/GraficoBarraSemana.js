@@ -15,14 +15,11 @@ class GraficoBarraSemana extends Component {
 
   componentDidMount() {
     this.ObtenerVariables(this.props.enlace);
-
-  
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState.data !== this.state.data) {
-      //console.log(prevState.data);
-     //console.log(this.state.data);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data !== this.props) {
+      this.ObtenerVariables(this.props.enlace)
     }
   }
 
@@ -33,6 +30,8 @@ class GraficoBarraSemana extends Component {
 
       <div className={identificador}>
         <Bar data={this.state.data} options={{
+            responsive: true,
+            events: [],
             title: {
               display: true,
               text: this.props.titulo,
@@ -77,8 +76,18 @@ class GraficoBarraSemana extends Component {
             },
             plugins: {
               datalabels: {
-
-                display: false
+                formatter: function(value, context) {
+                  return value + ' %';
+                },
+                display: true,
+                align: 'end',
+                anchor: 'end',
+                font: {
+                  family: 'Montserrat',
+                  style: 'normal',
+                  display: 'swap',
+                  weight: '500'
+                }
               }
             }
           }}/>
@@ -165,31 +174,28 @@ class GraficoBarraSemana extends Component {
             labels: listaDias,
             datasets: [
               {
-                label: "Porcentaje",
+                label: "mujeres",
                 backgroundColor: 'rgba(165, 76, 120, 1)',
                 barThickness: 50,
                 data: [
-                  datos_final[0].numero.toFixed(2),
-                  datos_final[1].numero.toFixed(2),
-                  datos_final[2].numero.toFixed(2),
-                  datos_final[3].numero.toFixed(2),
-                  datos_final[4].numero.toFixed(2),
-                  datos_final[5].numero.toFixed(2),
-                  datos_final[6].numero.toFixed(2)
+                  datos_final[0].numero.toFixed(0),
+                  datos_final[1].numero.toFixed(0),
+                  datos_final[2].numero.toFixed(0),
+                  datos_final[3].numero.toFixed(0),
+                  datos_final[4].numero.toFixed(0),
+                  datos_final[5].numero.toFixed(0),
+                  datos_final[6].numero.toFixed(0)
                 ]
               }, {
-                label: "Porcentaje",
+                label: "hombres",
                 backgroundColor: 'rgba(220, 221, 222, 1)',
                 barThickness: 50,
-                data: [
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100,
-                  100
-                ]
+                data: [100,100,100,100,100,100,100],
+                datalabels: {
+                  labels: {
+                    title: null
+                  }
+                }
               }
             ]
           };

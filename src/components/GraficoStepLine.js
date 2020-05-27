@@ -78,7 +78,6 @@ class GraficoStepLine extends Component {
                     radius: 0
                   }
                 },
-                responsive: true,
                 title: {
                   display: true,
                   text: '¿Cómo se distribuye por semana?',
@@ -140,7 +139,7 @@ class GraficoStepLine extends Component {
           <canvas id="myChart" ref={this.chartRef}/>
         </div>
       </div>
-      <br/>
+
       <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>

@@ -125,7 +125,7 @@ class GraficoBarra extends Component {
 
                   ticks: {
                     beginAtZero: true,
-                    stepSize: 10,
+                    stepSize: 25,
                     max: x
                   }
                 }
@@ -139,7 +139,7 @@ class GraficoBarra extends Component {
           }}/>
 
       </div>
-      <br/>
+
       <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(this.props.id)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
