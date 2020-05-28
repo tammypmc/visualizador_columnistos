@@ -62,8 +62,11 @@ class Navbar extends Component {
               Fecha
             </a>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <DropdownDates obtenerFecha={this.handleDate} obtenerAnio={this.handleYear} listaAnios={this.props.listaAnios}/>
-
+              
+            <form id="formLogin" class="form container-fluid">
+                <DropdownDates obtenerFecha={this.handleDate} obtenerAnio={this.handleYear} listaAnios={this.props.listaAnios}/>
+              
+            </form>
             </div>
             <p>
               {this.state.message}
