@@ -31,23 +31,42 @@ class App extends Component {
     this.listaAnios =  ObtenerAnios(aniosDisponibles);
     this.today = new Date();
     this.state = {
-      primerFecha : "",
-      segundaFecha : "",
+      primerFecha : this.getMonday(this.today),
+      segundaFecha : this.getSunday(this.today),
       anio : this.today.getFullYear()
     };
+
   }
 
 //  function getMonday
+getMonday(dateo){
+  var date = new Date();
+  var first = date.getDate() - date.getDay()+1;
+  var monday = new Date(date.setDate(first));
+  return (formatDate(monday.toString().split(" ", 4)));
 
+}
+
+//funcion getSaunday
+getSunday(dateo){
+  var date = new Date();
+
+  var first = date.getDate() - date.getDay()+1;
+  var last = first + 6; 
+  var sunday = new Date(date.setDate(last));
+  console.log(sunday);
+  return (formatDate(sunday.toString().split(" ", 4)));
+
+}
 
   /* obtiene fechas y da el formato necesario para la consulta del api */
   manejoDeFechas = (fecha) => {
-
     var fecha1 = formatDate(fecha[0].toString().split(" ", 4));
     var fecha2 = formatDate(fecha[1].toString().split(" ", 4));
+
     this.setState({primerFecha: fecha1});
     this.setState({segundaFecha: fecha2});
-   
+
     document.getElementById("main-titleBarra").style.display = "none";
     document.getElementById("main-titleBarraSemana").style.display = "none";
 
@@ -55,7 +74,7 @@ class App extends Component {
   manejoDeAnio = (anio_dropdown) => {
 
     this.setState({anio: anio_dropdown});
-    
+
     document.getElementById("main-titleBarra").style.display = "block";
     document.getElementById("main-titleBarraSemana").style.display = "block";
   }
@@ -88,9 +107,9 @@ class App extends Component {
           <div className="col-lg-7">
             <div className="shadow p-3 ">
               <p id="main-titleBarra">Debes seleccionar un rango de fechas</p>
-             
+
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
-              
+
             </div>
           </div>
         </div>
@@ -99,9 +118,9 @@ class App extends Component {
           <div className="col-lg-7">
             <div className="shadow p-3 ">
               <p id="main-titleBarraSemana">Debes seleccionar un rango de fechas</p>
-            
+
                 <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
-             
+
             </div>
           </div>
         </div>
