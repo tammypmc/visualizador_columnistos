@@ -16,6 +16,7 @@ class GraficoBarra extends Component {
 
   componentDidMount() {
   this.ObtenerVariables(this.props.enlace);/* retorna los datos dado el api */
+  
   }
 
   componentDidUpdate(prevProps, prevState) {

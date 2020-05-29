@@ -29,12 +29,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.listaAnios =  ObtenerAnios(aniosDisponibles);
+    this.today = new Date();
     this.state = {
-      primerFecha: "2020-05-04",
-      segundaFecha: "2020-05-10",
-      anio: "2020"
+      primerFecha : "",
+      segundaFecha : "",
+      anio : this.today.getFullYear()
     };
   }
+
+//  function getMonday
+
 
   /* obtiene fechas y da el formato necesario para la consulta del api */
   manejoDeFechas = (fecha) => {
