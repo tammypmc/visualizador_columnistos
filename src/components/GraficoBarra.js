@@ -10,13 +10,13 @@ class GraficoBarra extends Component {
     super(props);
     this.chartReference = React.createRef();
     this.state = {
-      data: []
+      data: { datasets:[], labels:[] }
     };
   }
 
   componentDidMount() {
   this.ObtenerVariables(this.props.enlace);/* retorna los datos dado el api */
-  
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -141,7 +141,7 @@ class GraficoBarra extends Component {
 
       </div>
 
-      <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(this.props.id)}>
+      <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(this.props.id)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
       </button>

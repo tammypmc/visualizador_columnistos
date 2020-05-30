@@ -8,10 +8,12 @@ import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
-import {ObtenerAnios} from './components/utilities'
+import {ObtenerAnios} from './components/utilities';
 
-const dominioAPI = "https://apicolumnistos.tedic.net/";
+
+const dominioAPI = process.env.REACT_APP_API_URL;
 const pais = "Paraguay";
+const medios = ["abc", "lanacionpy", "ultimahora"];
 const aniosDisponibles = dominioAPI + "api/anios_disponibles";
 const artDisponibles = dominioAPI + "api/cantidad_articulos";
 const autoresDisponibles = dominioAPI + "api/total_autores";
@@ -21,40 +23,37 @@ const promediosGenerales = dominioAPI + "api/periodicos";
 const diasSinMujeres = dominioAPI + "api/dias_sin_mujeres";
 const diasDisponibles = dominioAPI + "api/dias_disponibles";
 const diasSinMujeresPorMedio = dominioAPI + "api/dias_sin_mujeres_medio/";
-const medios = ["abc", "lanacionpy", "ultimahora"];
+
 
 class App extends Component {
 
-
   constructor(props) {
     super(props);
-    this.listaAnios =  ObtenerAnios(aniosDisponibles);
-    this.today = new Date();
+    this.listaAnios = ObtenerAnios(aniosDisponibles);
     this.state = {
-      primerFecha : this.getMonday(this.today),
-      segundaFecha : this.getSunday(this.today),
-      anio : this.today.getFullYear()
+      primerFecha : this.getMonday(),
+      segundaFecha : this.getSunday(),
+      anio : new Date().getFullYear()
+
     };
 
   }
 
 //  function getMonday
-getMonday(dateo){
+getMonday(){
   var date = new Date();
   var first = date.getDate() - date.getDay()+1;
   var monday = new Date(date.setDate(first));
   return (formatDate(monday.toString().split(" ", 4)));
-
 }
 
 //funcion getSaunday
-getSunday(dateo){
+getSunday(){
   var date = new Date();
 
   var first = date.getDate() - date.getDay()+1;
-  var last = first + 6; 
+  var last = first + 6;
   var sunday = new Date(date.setDate(last));
-  console.log(sunday);
   return (formatDate(sunday.toString().split(" ", 4)));
 
 }
@@ -69,12 +68,10 @@ getSunday(dateo){
 
     document.getElementById("main-titleBarra").style.display = "none";
     document.getElementById("main-titleBarraSemana").style.display = "none";
-
   }
+
   manejoDeAnio = (anio_dropdown) => {
-
     this.setState({anio: anio_dropdown});
-
     document.getElementById("main-titleBarra").style.display = "block";
     document.getElementById("main-titleBarraSemana").style.display = "block";
   }

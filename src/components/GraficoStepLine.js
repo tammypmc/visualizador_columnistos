@@ -35,7 +35,7 @@ class GraficoStepLine extends Component {
       .then(
         (result) => {
             var datos = result.data;
-            var lista_datos = [];
+
             var semana = [];
             var porcentaje = [];
 
@@ -53,7 +53,7 @@ class GraficoStepLine extends Component {
             }
 
             const myChartRef = this.chartRef.current.getContext("2d");
-            const {data, average, labels} = this.props;
+
 
             if (typeof myLineChart !== "undefined")
               myLineChart.destroy();
@@ -140,7 +140,7 @@ class GraficoStepLine extends Component {
         </div>
       </div>
 
-      <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
+      <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
       </button>

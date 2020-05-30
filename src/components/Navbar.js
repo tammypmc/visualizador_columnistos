@@ -4,25 +4,20 @@ import '../App.css';
 
 class Navbar extends Component {
   state = {
-    slide: '-60px', // How much should the Navbar slide up or down
-    lastScrollY: 0, // Keep track of current position in state
+    slide: '-60px',
+    lastScrollY: 0,
     date: "",
     year: ""
   };
 
-  componentWillMount() {
-    // When this component mounts, begin listening for scroll changes
-    window.addEventListener('scroll', this.handleScroll);
-  }
+  componentDidMount() {
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
     const {lastScrollY} = this.state;
     const currentScrollY = window.scrollY;
-    console.log(currentScrollY);
     if (lastScrollY < 300) {
       this.setState({slide: '-60px'});
     } else {

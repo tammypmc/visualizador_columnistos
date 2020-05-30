@@ -16,7 +16,7 @@ class InfoColumnistos extends Component {
   render() {
     var items = [];
     for (var i = 0; i < this.listaAnios.length; i++) {
-      items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId}>{this.listaAnios[i]}</button>);
+      items.push(<button className="dropdown-item" id={this.listaAnios[i]} type="button" onClick={this.handleId} key={this.listaAnios[i]}>{this.listaAnios[i]}</button>);
     }
 
     return (<div className="container p-3">

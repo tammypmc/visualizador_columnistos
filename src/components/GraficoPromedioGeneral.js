@@ -10,7 +10,7 @@ class GraficoPromedioGeneral extends Component {
     super(props);
     this.chartReference = React.createRef();
     this.state = {
-      data: []
+      data: { datasets:[], labels:[] }
     };
   }
 
@@ -84,7 +84,7 @@ class GraficoPromedioGeneral extends Component {
           }}/>
 
       </div>
-      <button role="button" className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
+      <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
       </button>
@@ -114,8 +114,8 @@ class GraficoPromedioGeneral extends Component {
                 periodicos.push(datos[i].site)
               }
 
-              for (var i = 0; i < porcentajes_mujeres.length; i++) {
-                porcentajes_hombres.push(100 - porcentajes_mujeres[i])
+              for (var j = 0; j < porcentajes_mujeres.length; j++) {
+                porcentajes_hombres.push(100 - porcentajes_mujeres[j])
               }
 
               const data = {
