@@ -90,7 +90,7 @@ getSunday(){
         <div className="row m-lg-5  justify-content-center">
           <div className="col-lg-4">
             <div className="shadow p-3 Promedios_Generales">
-              <GraficoPromedioGeneral id="graficogeneral" enlace={promediosGenerales} titulo="Promedios generales"/>
+              <GraficoPromedioGeneral id="graficogeneral" periodicos={medios} enlace={promediosGenerales} titulo="Promedios generales"/>
             </div>
           </div>
         </div>
