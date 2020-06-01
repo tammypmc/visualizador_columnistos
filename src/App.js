@@ -8,13 +8,13 @@ import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
-import {ObtenerAnios,obtenerMedios} from './components/utilities';
+import {ObtenerAnios} from './components/utilities';
 
 
 const dominioAPI = process.env.REACT_APP_API_URL;
 const pais = process.env.REACT_APP_COUNTRY;
-const prueba = obtenerMedios(process.env.REACT_APP_MEDIOS);
-const medios = ["abc", "lanacionpy", "ultimahora"];
+const medios = process.env.REACT_APP_MEDIOS.split(',');
+const mediosDB = process.env.REACT_APP_MEDIOS_BD_NAMES.split(',')
 const aniosDisponibles = dominioAPI + "api/anios_disponibles";
 const artDisponibles = dominioAPI + "api/cantidad_articulos";
 const autoresDisponibles = dominioAPI + "api/total_autores";
@@ -36,7 +36,7 @@ class App extends Component {
       segundaFecha : this.getSunday(),
       anio : new Date().getFullYear()
     };
-    console.log(prueba);
+
   }
 
 //  function getMonday
@@ -78,7 +78,6 @@ getSunday(){
     var graficoSemana = dominioAPI + "api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var distribucionMesAnio = dominioAPI + "api/distribucion_mes_anio/" + this.state.anio;
     var distribucionSemanaAnio = dominioAPI + "api/distribucion_semana_anio/" + this.state.anio;
-
 
     return (<div className="container-auto py-0">
 
@@ -132,7 +131,7 @@ getSunday(){
         <div className="row m-lg-5 justify-content-center">
           <div className="col-lg-4">
             <div className="shadow p-3 ">
-              <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={medios} titulo="Días sin mujeres"/>
+              <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={mediosDB} titulo="Días sin mujeres"/>
             </div>
           </div>
         </div>

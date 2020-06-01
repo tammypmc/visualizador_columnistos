@@ -30,6 +30,7 @@ class DropdownDates extends Component {
       for (var i=0; i<this.listaAnios.length; i++){
         this.items.push(<button type="button"  id={this.listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} key={this.listaAnios[i]} >{this.listaAnios[i]}</button>)
       }
+      
   }
 
 
@@ -38,7 +39,7 @@ class DropdownDates extends Component {
     <div className="container">
 
       <div className="row p-2 pl-3 justify-content-left">
-        <p className = "h6">Seleccionar año</p>
+        <p className = "h6">Visualizar por año</p>
       </div>
 
       <div className="row pl-2">
@@ -52,7 +53,7 @@ class DropdownDates extends Component {
       <hr/>
 
       <div className="row p-2 pl-3  justify-content-left">
-        <p className = "h6">Seleccionar fecha</p>
+        <p className = "h6">Visualizar por fecha</p>
       </div>
 
       <div className="row pl-2">
