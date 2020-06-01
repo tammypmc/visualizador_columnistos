@@ -50,7 +50,8 @@ class GraficoBarra extends Component {
                   }
                 }
               }
-
+              
+            
 
               var nuevo = {
                 data: {
@@ -62,7 +63,7 @@ class GraficoBarra extends Component {
               var valor_por_periodico = 0;
               var color = 0;
               const COLORS = ['#CE796B', '#C18C5D', '#495867', '#A2C3A4', '#C4F1BE']
-              for (var i = 0; i < lista_periodico.length; i++) {
+              for (var i = 0; i < this.props.periodicos.length; i++) {
 
                 var lista_data = []
                 for (var j = 0; j < llave.length; j++) {
@@ -71,7 +72,7 @@ class GraficoBarra extends Component {
                 }
 
                 nuevo.data.datasets[i] = {
-                  label: lista_periodico[i],
+                  label:this.props.periodicos[i],
                   backgroundColor: COLORS[color],
                   borderColor: COLORS[color],
                   borderWidth: 1,

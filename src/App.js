@@ -91,7 +91,7 @@ getSunday(){
         <div className="row m-lg-5  justify-content-center">
           <div className="col-lg-4">
             <div className="shadow p-3 Promedios_Generales">
-              <GraficoPromedioGeneral id="graficogeneral" enlace={promediosGenerales} titulo="Promedios generales"/>
+              <GraficoPromedioGeneral id="graficogeneral" periodicos={medios} enlace={promediosGenerales} titulo="Promedios generales"/>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ getSunday(){
         <div className="row  m-lg-5  justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3 ">
-                <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
+                <GraficoBarraSemana id="graficosemana"  enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ getSunday(){
         <div className="row  m-lg-5  justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3 ">
-                <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
+                <GraficoBarra id="semana" periodicos={medios} enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
 
             </div>
           </div>
@@ -116,7 +116,7 @@ getSunday(){
         <div className="row  m-lg-5 justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3">
-              <GraficoBarra id="mes" enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periódico?"/>
+              <GraficoBarra id="mes"  periodicos={medios} enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periódico?"/>
             </div>
           </div>
         </div>

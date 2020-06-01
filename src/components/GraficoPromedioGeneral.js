@@ -111,7 +111,7 @@ class GraficoPromedioGeneral extends Component {
               for (var i = 0; i < datos.length; i++) {
                 var total = (datos[i].articulos_mujeres * 100) / (datos[i].articulos_mujeres + datos[i].articulos_hombres);
                 porcentajes_mujeres.push(total.toFixed());
-                periodicos.push(datos[i].site)
+                periodicos.push(this.props.periodicos[i])
               }
 
               for (var j = 0; j < porcentajes_mujeres.length; j++) {
