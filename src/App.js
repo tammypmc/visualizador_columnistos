@@ -131,7 +131,7 @@ getSunday(){
         <div className="row m-lg-5 justify-content-center">
           <div className="col-lg-4">
             <div className="shadow p-3 ">
-              <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={mediosDB} titulo="Días sin mujeres"/>
+              <GraficoDiasSinMujeres id="diasSinMujeres" enlace={diasSinMujeres} enlaceDias={diasDisponibles} enlaceMedio={diasSinMujeresPorMedio} listaMedios={mediosDB} nombresMedios={medios} titulo="Días sin mujeres"/>
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ class GraficoDiasSinMujeres extends Component {
     for (var i = 0; i < this.props.listaMedios.length; i++) {
       listaEnlaces.push(enlace.concat(this.props.listaMedios[i]));
     }
-    var datos = this.ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios);
+    var datos = this.ObtenerVariables(this.props.enlace, listaEnlaces, this.props.listaMedios, this.props.nombresMedios);
     this.setState({data: datos});
   }
 
@@ -107,7 +107,7 @@ class GraficoDiasSinMujeres extends Component {
 
     </div>);
   }
-  ObtenerVariables(consulta, listaEnlaces, listaMedios) {
+  ObtenerVariables(consulta, listaEnlaces, listaMedios, nombresMedios) {
     var dias = []
     var httpRequest = new XMLHttpRequest();
 
@@ -123,7 +123,7 @@ class GraficoDiasSinMujeres extends Component {
       dias.push(cons.data[0].dias_sin_mujeres);
     }
 
-    var titulos = ["Total"].concat(listaMedios);
+    var titulos = ["Total"].concat(nombresMedios);
     const data = {
       labels: titulos,
       datasets: [
