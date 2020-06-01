@@ -8,11 +8,12 @@ import GraficoDiasSinMujeres from './components/GraficoDiasSinMujeres';
 import GraficoPromedioGeneral from './components/GraficoPromedioGeneral';
 import GraficoStepLine from './components/GraficoStepLine';
 import InfoColumnistos from './components/InfoColumnistos';
-import {ObtenerAnios} from './components/utilities';
+import {ObtenerAnios,obtenerMedios} from './components/utilities';
 
 
 const dominioAPI = process.env.REACT_APP_API_URL;
-const pais = "Paraguay";
+const pais = process.env.REACT_APP_COUNTRY;
+const prueba = obtenerMedios(process.env.REACT_APP_MEDIOS);
 const medios = ["abc", "lanacionpy", "ultimahora"];
 const aniosDisponibles = dominioAPI + "api/anios_disponibles";
 const artDisponibles = dominioAPI + "api/cantidad_articulos";
@@ -34,24 +35,23 @@ class App extends Component {
       primerFecha : this.getMonday(),
       segundaFecha : this.getSunday(),
       anio : new Date().getFullYear()
-
     };
-
+    console.log(prueba);
   }
 
 //  function getMonday
 getMonday(){
   var date = new Date();
-  var first = date.getDate() - date.getDay()+1;
+  var first = date.getDate() - date.getDay();
   var monday = new Date(date.setDate(first));
   return (formatDate(monday.toString().split(" ", 4)));
+
 }
 
-//funcion getSaunday
+//funcion getSunday
 getSunday(){
   var date = new Date();
-
-  var first = date.getDate() - date.getDay()+1;
+  var first = date.getDate() - date.getDay();
   var last = first + 6;
   var sunday = new Date(date.setDate(last));
   return (formatDate(sunday.toString().split(" ", 4)));
@@ -73,6 +73,7 @@ getSunday(){
 
 
   render() {
+
     var graficoSemanaPeriodico = dominioAPI + "api/distribucion_semana_periodico_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var graficoSemana = dominioAPI + "api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var distribucionMesAnio = dominioAPI + "api/distribucion_mes_anio/" + this.state.anio;
