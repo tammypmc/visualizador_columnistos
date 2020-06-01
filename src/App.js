@@ -65,15 +65,10 @@ getSunday(){
 
     this.setState({primerFecha: fecha1});
     this.setState({segundaFecha: fecha2});
-
-    document.getElementById("main-titleBarra").style.display = "none";
-    document.getElementById("main-titleBarraSemana").style.display = "none";
   }
 
   manejoDeAnio = (anio_dropdown) => {
     this.setState({anio: anio_dropdown});
-    document.getElementById("main-titleBarra").style.display = "block";
-    document.getElementById("main-titleBarraSemana").style.display = "block";
   }
 
 
@@ -103,10 +98,7 @@ getSunday(){
         <div className="row  m-lg-5  justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3 ">
-              <p id="main-titleBarra">Debes seleccionar un rango de fechas</p>
-
                 <GraficoBarraSemana id="graficosemana" enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
-
             </div>
           </div>
         </div>
@@ -114,8 +106,6 @@ getSunday(){
         <div className="row  m-lg-5  justify-content-center">
           <div className="col-lg-7">
             <div className="shadow p-3 ">
-              <p id="main-titleBarraSemana">Debes seleccionar un rango de fechas</p>
-
                 <GraficoBarra id="semana" enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
 
             </div>
