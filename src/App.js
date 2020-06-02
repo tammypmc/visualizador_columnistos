@@ -32,15 +32,15 @@ class App extends Component {
     super(props);
     this.listaAnios = ObtenerAnios(aniosDisponibles);
     this.state = {
-      primerFecha : this.getMonday(),
-      segundaFecha : this.getSunday(),
+      primerFecha : this.getSunday(),
+      segundaFecha : this.getMonday(),
       anio : new Date().getFullYear()
     };
 
   }
 
 //  function getMonday
-getMonday(){
+getSunday(){
   var date = new Date();
   var first = date.getDate() - date.getDay();
   var monday = new Date(date.setDate(first));
@@ -49,7 +49,7 @@ getMonday(){
 }
 
 //funcion getSunday
-getSunday(){
+getMonday(){
   var date = new Date();
   var first = date.getDate() - date.getDay();
   var last = first + 6;
