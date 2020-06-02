@@ -33,13 +33,13 @@ class App extends Component {
     this.listaAnios = ObtenerAnios(aniosDisponibles);
     this.state = {
       primerFecha : this.getSunday(),
-      segundaFecha : this.getMonday(),
+      segundaFecha : this.getSaturday(),
       anio : new Date().getFullYear()
     };
 
   }
 
-//  function getMonday
+//  function para obtener el domingo como primer dia de la semana
 getSunday(){
   var date = new Date();
   var first = date.getDate() - date.getDay();
@@ -48,8 +48,8 @@ getSunday(){
 
 }
 
-//funcion getSunday
-getMonday(){
+//funcion sabado como ultimo dia de la semana
+getSaturday(){
   var date = new Date();
   var first = date.getDate() - date.getDay();
   var last = first + 6;
@@ -58,7 +58,9 @@ getMonday(){
 
 }
 
-  /* obtiene fechas y da el formato necesario para la consulta del api */
+  /* obtiene fechas y da el formato necesario para la consulta del api y lo actualiza en el state
+    Parametro : fecha seleccionada desde el calendario de DropdownDates
+  */
   manejoDeFechas = (fecha) => {
     var fecha1 = formatDate(fecha[0].toString().split(" ", 4));
     var fecha2 = formatDate(fecha[1].toString().split(" ", 4));
@@ -66,14 +68,15 @@ getMonday(){
     this.setState({primerFecha: fecha1});
     this.setState({segundaFecha: fecha2});
   }
-
+  /* obtiene fechas y da el formato necesario para la consulta del api y lo actualiza en el state
+    Parametro : Año seleccionada desde DropdownDates o desde InfoColumnistos
+  */
   manejoDeAnio = (anio_dropdown) => {
     this.setState({anio: anio_dropdown});
   }
 
 
   render() {
-
     var graficoSemanaPeriodico = dominioAPI + "api/distribucion_semana_periodico_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var graficoSemana = dominioAPI + "api/distribucion_semana_rango/" + this.state.primerFecha + "/" + this.state.segundaFecha;
     var distribucionMesAnio = dominioAPI + "api/distribucion_mes_anio/" + this.state.anio;
@@ -144,7 +147,8 @@ getMonday(){
 
 }
 
-/* brinda el formato de fecha yyyy/mm/dd */
+/* brinda el formato de fecha yyyy/mm/dd
+parametro -> fecha */
 function formatDate(date) {
   var d = new Date(date),
     month = '' + (

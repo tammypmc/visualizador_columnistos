@@ -4,6 +4,13 @@ import 'chartjs-plugin-datalabels';
 import '../App.css';
 import {descargarImagen} from './utilities'
 
+
+/* para llamar esta clase
+         <GraficoPromedioGeneral
+         enlace="https://apicolumnistos.tedic.net/api/periodicos"
+         titulo= "Dias sin mujeres"
+         />
+*/
 class GraficoPromedioGeneral extends Component {
 
   constructor(props) {
@@ -24,7 +31,6 @@ class GraficoPromedioGeneral extends Component {
       <div className={identificador}>
 
         <HorizontalBar data={this.state.data} options={{
-            responsive: true,
             events: [],
             title: {
               display: true,
@@ -91,6 +97,11 @@ class GraficoPromedioGeneral extends Component {
     </div>);
   }
 
+  /*
+  Realiza la consulta al API y genera los porcentajes dados los numeros retornados por la consulta.
+  Prepara los datos para el grafico y actualiza el state.
+  Parametro: Consulta -> url de la consulta correspondiente a promedios generales
+  */
   ObtenerPromedios(consulta) {
     fetch(consulta)
           .then(res => res.json())
@@ -103,6 +114,9 @@ class GraficoPromedioGeneral extends Component {
               var porcentajes_hombres = [];
 
               var totalRegistros = this.calcularTotalRegistros(datos);
+              /*totalRegistros es una lista de 3 elementos, en la primera posicion tiene el total de registros general, en la segunda posicion
+              tiene el total de registros de mujeres y en la tercera de hombres.
+              */
 
               var totalGeneral = (totalRegistros[1] * 100) / totalRegistros[0];
               periodicos.push("Total");
@@ -150,6 +164,11 @@ class GraficoPromedioGeneral extends Component {
           )
   }
 
+  /*
+  Se calcula la cantidad de registros por mujeres, por hombres y en total.
+  Parametro: datos -> variable obtenida desde la consulta del API
+  Retorno -> totales -> variable que contiene una lista con las cantidades totales de registros de hombres,mujeres y en general
+  */
   calcularTotalRegistros(datos) {
     var total = 0;
     var totalH = 0;

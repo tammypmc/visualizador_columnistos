@@ -3,11 +3,15 @@ import {Bar} from 'react-chartjs-2';
 import '../App.css';
 import {descargarImagen} from './utilities'
 
+/* para llamar esta clase
+         <GraficoBarraSemana id="graficosemana"  enlace={graficoSemana} titulo="¿Cómo se distribuyen por dia de la semana?"/>
+*/
 class GraficoBarraSemana extends Component {
 
   constructor(props) {
     super(props);
     this.chartReference = React.createRef();
+    //dentro del state se guardaran los datasets del grafico
     this.state = {
       data: { datasets:[], labels:[] }
     };
@@ -30,13 +34,13 @@ class GraficoBarraSemana extends Component {
 
       <div className={identificador}>
         <Bar data={this.state.data} options={{
-            responsive: true,
             events: [],
             title: {
               display: true,
               text: this.props.titulo,
               /* se extrae de de app el titulo del grafico */
-              fontSize: 20
+              fontSize: 20,
+              padding: 20
             },
             legend: {
               display: false
@@ -80,7 +84,8 @@ class GraficoBarraSemana extends Component {
                   return value + ' %';
                 },
                 display: true,
-                align: 'end',
+                align: 'start',
+                offset : '-20',
                 anchor: 'end',
                 font: {
                   family: 'Montserrat',
@@ -101,13 +106,19 @@ class GraficoBarraSemana extends Component {
     </div>);
   }
 
+  /*
+  Realiza la consulta al API de los promedios por semana
+  Parametro: Consulta -> url de la consulta correspondiente a distribucion por semana
+  Modifica el state
+  */
   ObtenerVariables(consulta) {
     fetch(consulta)
       .then(res => res.json())
       .then(
         (result) => {
           var datos = result.data;
-
+          //listaDias se utiliza como referencia para ordenar los datos,
+          //ademas como labels del grafico
           var listaDias = [
             "Domingo",
             "Lunes",
@@ -117,19 +128,21 @@ class GraficoBarraSemana extends Component {
             "Viernes",
             "Sabado"
           ];
+          //lista que tendra el orden de los dias en la respuesta del API
           var lis = [];
-
           for (var i = 0; i < datos.length; i++) {;
             lis.push(datos[i].dia);
           }
 
+          //si la respuesta del api no incluye algun dia, se inserta con un 0
           for (var j = 0; j < listaDias.length; j++) {
             if (lis.includes(listaDias[j]) === false) {
               datos.push({dia: listaDias[j], numero: 0});
               lis.push(listaDias[j]);
             }
           }
-
+          //se intercambian los nombres de los dias en la respuesta del api
+          //por su correspondiente orden en la semana
           for (var x = 0; x < datos.length; x++) {
             switch (datos[x].dia) {
               case "Domingo":
@@ -156,7 +169,7 @@ class GraficoBarraSemana extends Component {
 
             }
           }
-
+          //lista que se utilizara para ordenar los dias de la semana
           var datos_final = [
             0,
             1,
@@ -166,6 +179,7 @@ class GraficoBarraSemana extends Component {
             5,
             6
           ];
+          //se ordena la lista por numero de dia
           for (var y = 0; y < datos.length; y++) {
             datos_final[datos[y].dia] = datos[y];
           }
@@ -200,7 +214,6 @@ class GraficoBarraSemana extends Component {
             ]
           };
           this.setState({data: data});
-
         }
       )
 

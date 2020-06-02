@@ -5,6 +5,9 @@ import classes from "./LineGraph.module.css";
 import {descargarImagen} from './utilities'
 let myLineChart;
 
+/* para llamar esta clase
+         <GraficoStepLine enlace={distribucionSemanaAnio} id="GraficoStepLine"/>
+*/
 class GraficoStepLine extends Component {
 
   constructor(props) {
@@ -20,15 +23,19 @@ class GraficoStepLine extends Component {
     this.obtenerInformacion(this.props.enlace);
   }
 
+  /*cada vez que se actualiza la fecha se vuelve a generar los datos de los graficos*/
+  /*  parametro: consulta del api actualizada*/
   componentDidUpdate(prevProps, prevState) {
   if (prevProps.data !== this.props) {
     this.obtenerInformacion(this.props.enlace)
   }
 }
 
-
-
-
+/*
+divide el resultado de la consulta en 2 listas numero de semana y porcentaje de cada una, cada una corresponde,
+al label y el dataset del grafico, genera el gráfico ycon "drawOnChartArea" generamos la linea entre cada punto.
+Parametro: enlace-> url de la consulta correspondiente distribucion por semana al año proveniente del API.
+*/
   obtenerInformacion(enlace){
     fetch(enlace)
       .then(res => res.json())
@@ -127,19 +134,14 @@ class GraficoStepLine extends Component {
   }
 
 
-
-
-
-
   render() {
-    var identificador = this.props.id;
+    var identificador = this.props.id; /*nombre con el que se descargara la imagen*/
     return (<div className="componente_stephline">
       <div className={identificador}>
         <div className={classes.graphContainer}>
           <canvas id="myChart" ref={this.chartRef}/>
         </div>
       </div>
-
       <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(identificador)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import DropdownDates from './DropdownDates';
 import '../App.css';
-
+/*
+Para llamar a esta clase:
+ <Navbar seleccionFecha={handler de fechas} seleccionAnio={handler de anios} listaAnios= {lista de Anios}></Navbar>
+*/
 class Navbar extends Component {
   state = {
     slide: '-60px',
@@ -15,6 +18,9 @@ class Navbar extends Component {
     window.addEventListener('scroll', this.handleScroll);
   }
 
+  /*
+
+  */
   handleScroll = () => {
     const {lastScrollY} = this.state;
     const currentScrollY = window.scrollY;
@@ -30,12 +36,17 @@ class Navbar extends Component {
     this.setState({message: childData})
   };
 
-  handleDate = (Date) => {/* envia a app.js el rango de fechas seleccionadas */
+/* envia a app.js el rango de fechas seleccionadas
+parametro: rango de fechas seleccionadas del calendario */
+  handleDate = (Date) => {
+
     this.setState({date: Date});
     this.props.seleccionFecha(Date);
   }
 
-  handleYear = (Year) => {/* envia a app.js el rango de fechas seleccionadas */
+/* envia a app.js el anio seleccionado del dropdown fecha
+parametro: anio seleccionado del calendario */
+  handleYear = (Year) => {
     this.setState({year: Year});
     this.props.seleccionAnio(Year);
   }

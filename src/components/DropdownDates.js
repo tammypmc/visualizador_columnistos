@@ -4,6 +4,10 @@ import 'react-calendar/dist/Calendar.css';
 import '../App.css';
 import '../customCalendar.css';
 
+/*
+ Para llamar a esta clase
+   <DropdownDates obtenerFecha={handler de fehca} obtenerAnio={handler de anio} listaAnios={lista de anios}/>
+*/
 
 class DropdownDates extends Component {
 
@@ -30,11 +34,12 @@ class DropdownDates extends Component {
       for (var i=0; i<this.listaAnios.length; i++){
         this.items.push(<button type="button"  id={this.listaAnios[i]} className="btn btn-secondary btn-secondary-custom py-0 " onClick={this.handleId} key={this.listaAnios[i]} >{this.listaAnios[i]}</button>)
       }
-      
+
   }
 
 
   render() {
+    
     return (
     <div className="container">
 
@@ -60,7 +65,6 @@ class DropdownDates extends Component {
 
           <Calendar
             onChange={this.onChange}
-
             selectRange = {true}
             defaultView = {'month'}
             locale = {"es-419"}

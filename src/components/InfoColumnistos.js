@@ -45,7 +45,7 @@ class InfoColumnistos extends Component {
 
       <div className="row justify-content-center">
         <div className="col-lg-10">
-          <p className="h6 text-justify">Bot Colmunistos es un programa informático que recorre las secciones de opinión de los sitios Web de medios paraguayos. En su recorrido, recoge todos los artículos publicados solo en esas secciones y arma una base de datos. El programa trata de identificar qué artículos son escritos por mujeres y cuáles por hombres. Cuando no logra diferenciar, porque el nombre es neutro o por algún otro motivo, envía un mensaje a alguien de TEDIC que “le da una mano” para decidir. El bot fue desarrollado por Economía Feminista, una organización amiga de Argentina. Los programadores de TEDIC se encargaron de adaptarlo para que funcione con los medios de difusión de Paraguay.</p>
+          <p className="h6 text-justify">Bot Colmunistos es un programa informático que recorre las secciones de opinión de los sitios Web de medios. En su recorrido, recoge todos los artículos publicados solo en esas secciones y arma una base de datos. El programa trata de identificar qué artículos son escritos por mujeres y cuáles por hombres. Cuando no logra diferenciar, porque el nombre es neutro o por algún otro motivo, envía un mensaje a algun colaborador que “le da una mano” para decidir. El bot fue desarrollado por Economía Feminista, una organización de Argentina.</p>
         </div>
       </div>
     </div>);

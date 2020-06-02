@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* para llamar esta clase
+          <GeneralInformation enlace1={artDisponibles} enlace2={autoresDisponibles} enlace3={mesesDisponibles} enlace4={mediosDisponibles}/>
+*/
 class GeneralInformation extends Component {
 
   constructor(props) {
@@ -16,7 +20,7 @@ class GeneralInformation extends Component {
 
   componentDidMount() {
     this.ObtenerVariables(this.props.enlace1, this.props.enlace2, this.props.enlace3, this.props.enlace4);
-    
+
   }
 
   render() {
@@ -46,7 +50,14 @@ class GeneralInformation extends Component {
       </ul>
     </div>)
   }
-
+  /*
+    Obtiene los datos de informacion general en la base de datos por medio de consultas al API
+    Parametro -> consulta1 -> Url del api correspondiente a cantidad de articulos
+                 consulta2 -> Url del api correspondiente a cantidad de autores
+                 consulta3 -> Url del api correspondiente a cantidad de meses registrados
+                 consulta4 -> Url del api correspondiente a cantidad de medios registrados
+    Modifica el state con los resultados
+  */
   ObtenerVariables(consulta1, consulta2, consulta3, consulta4) {
     Promise.all([
             fetch(consulta1),

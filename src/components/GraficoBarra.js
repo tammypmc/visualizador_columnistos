@@ -4,6 +4,12 @@ import '../App.css';
 import {descargarImagen} from './utilities'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+/* para llamar esta clase:
+      SEMANA:
+        <GraficoBarra id="semana" periodicos={medios} enlace={graficoSemanaPeriodico} titulo="¿Cómo se distribuye por día de la semana  por periódico?"/>
+      MES:
+        <GraficoBarra id="mes"  periodicos={medios} enlace={distribucionMesAnio} titulo="¿Cómo se distribuyen por mes por periódico?"/>
+*/
 class GraficoBarra extends Component {
 
   constructor(props) {
@@ -19,14 +25,17 @@ class GraficoBarra extends Component {
 
   }
 
+/*cada vez que se actualiza la fecha se vuelve a generar los datos de los graficos*/
+/* parametro: consulta del api actualizada*/
   componentDidUpdate(prevProps, prevState) {
   if (prevProps.data !== this.props) {
     this.ObtenerVariables(this.props.enlace)
   }
 }
 
-  /* obtiene la consulta, divide en 3 listas el resultado de la consulta entre el nombre del periodico, los meses o semana
-  y el porcentaje de cada uno,crea el dataset, le asigna los colores y divide los valores de cada barra */
+  /* divide el resultado de la consulta en 3 listas nombre del periodico, los meses o semana  y el porcentaje de cada
+  uno, crea el dataset por cada periodico, le asigna los colores a cada periodico y divide los valores de cada barra
+  parametro: consulta del api*/
   ObtenerVariables(consulta) {
     fetch(consulta)
           .then(res => res.json())
@@ -50,8 +59,6 @@ class GraficoBarra extends Component {
                   }
                 }
               }
-              
-            
 
               var nuevo = {
                 data: {
@@ -63,8 +70,8 @@ class GraficoBarra extends Component {
               var valor_por_periodico = 0;
               var color = 0;
               const COLORS = ['#CE796B', '#C18C5D', '#495867', '#A2C3A4', '#C4F1BE']
-              for (var i = 0; i < this.props.periodicos.length; i++) {
 
+              for (var i = 0; i < this.props.periodicos.length; i++) { /*genera un dataset con la informacion de cada periodico*/
                 var lista_data = []
                 for (var j = 0; j < llave.length; j++) {
                   lista_data.push(valor[valor_por_periodico]);
@@ -92,7 +99,7 @@ class GraficoBarra extends Component {
 
   render() {
     var x = 0;
-    if (this.props.id === "semana") {
+    if (this.props.id === "semana") { /* si se habla de semana el máximo del eje "y" será 100, en caso de ser mes será 50*/
       x = 100;
     } else {
       x = 50;
@@ -103,8 +110,7 @@ class GraficoBarra extends Component {
         <Bar data={this.state.data} width={null} height={null} options={{
             title: {
               display: true,
-              text: this.props.titulo,
-              /* se extrae de de app el titulo del grafico */
+              text: this.props.titulo,            /* se extrae  de app el titulo del grafico */
               fontSize: 20
             },
             legend: {
@@ -141,8 +147,7 @@ class GraficoBarra extends Component {
           }}/>
 
       </div>
-
-      <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(this.props.id)}>
+        <button className="btn btn-outline-secondary btn-sm btn-auto btn-iconed btn-rounded" onClick={() => console.log("ici") || descargarImagen(this.props.id)}>
         <i className="icon ion-md-arrow-down"></i>
         <span className="spn">Descargar</span>
       </button>
