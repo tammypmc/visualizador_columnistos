@@ -2,7 +2,164 @@
   text-align: center;
 }
 
-
 .canvas-container {
   height: 60vh;
 }
+
+.navbar-custom {
+  background-color: #F1F1F1;
+}
+
+.navbar .container, .navbar .container-fluid, .navbar .container-lg, .navbar .container-md, .navbar .container-sm, .navbar .container-xl {
+  display: block !important;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand {
+  color: #707070;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: #000000;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+}
+
+.navbar-nav .dropdown-menu {
+  position: fixed !important;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #A54C78;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(165, 76, 120, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler .navbar-toggler:focus, .custom-toggler .navbar-toggler:hover {
+  border: 0px;
+}
+
+.btn-secondary, .btn-secondary:visited {
+  color: #3B86FF !important;
+  background-color: transparent !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 700 !important;
+  border: 0px !important;
+}
+
+.btn-secondary:hover, .btn-secondary:active {
+  color: #707070 !important;
+  background-color: transparent !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 700 !important;
+  border: 0px !important;
+}
+
+.btn:focus, .btn:active {
+  color: #707070 !important;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+hr {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+h1 {
+  color: #707070 !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 500 !important;
+}
+
+h3 {
+  color: #707070 !important;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 500 !important;
+}
+
+p{
+  color: #707070 !important;
+  font-size: 0.75rem;
+  font-family: 'Montserrat' !important;
+  font-style: normal !important;
+  font-display: swap !important;
+  font-weight: 400 !important;
+}
+
+
+/** Flatted button %placeholder **/
+.btn-iconed.btn-flat {
+  border-radius: 0rem;
+  /* margin-right: 2rem; Icon sample spacing */
+}
+/** Rounded button **/
+.btn-rounded {
+  border-radius: 5rem;
+  /* margin-right: 2rem;  Icon sample spacing */
+}
+/** Button Iconed **/
+.btn-iconed {
+  transition: .15s ease-in-out;
+  padding-left: 1.3rem;
+  padding-right: 1.5rem;
+  /** Flatted button **/
+}
+/** Icons Classes **/
+/** -- Open Iconic and Font Awesome -- **/
+.btn-iconed [class~=oi], .btn-iconed [class~=fa],
+/** -- Since Material and Iconic used ::before -- **/
+.btn-iconed [class~=mdi]::before,
+.btn-iconed [class~=icon]::before {
+ opacity: 0;
+  -webkit-transform-origin: left right;
+  transform-origin: left right;
+  -webkit-transform: translateX(-10px) scale(1.25);
+  transform: translateX(-10px) scale(1.25);
+  transition: .15s ease-out;
+}
+/** Span Class **/
+.btn-iconed [class=spn] {
+  position: relative;
+  left: -9px;
+  -webkit-transform-origin: left right;
+  transform-origin: left right;
+  -webkit-transform: translateX(-9px);
+  transform: translateX(-9px);
+  transition: .20s ease-in-out;
+}
+/** -- Icons on Hover properties -- **/
+.btn-iconed:hover [class~=oi], .btn-iconed:hover [class~=fa],
+.btn-iconed:hover [class~=mdi]::before, .btn-iconed:hover [class~=icon]::before {
+  opacity: 1;
+  -webkit-transform: translateX(0px) scale(0.75);
+  transform: translateX(0px) scale(0.75);
+}
+/** -- Span on Hover properties -- **/
+.btn-iconed:hover [class=spn] {
+  left: 0px;
+}
+/** style.css -- compiled **/
+
