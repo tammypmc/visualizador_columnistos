@@ -156,8 +156,10 @@ class GraficoBarra extends Component {
 
   }
 
+
 }
 
 
 
 export default GraficoBarra;
+

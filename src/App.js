@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import GeneralInformation from './components/GeneralInformation';
 import Navbar from './components/Navbar';
@@ -26,6 +27,7 @@ const diasDisponibles = dominioAPI + "api/dias_disponibles";
 const diasSinMujeresPorMedio = dominioAPI + "api/dias_sin_mujeres_medio/";
 
 
+
 class App extends Component {
 
   constructor(props) {
@@ -36,16 +38,6 @@ class App extends Component {
       segundaFecha : this.getSaturday(),
       anio : new Date().getFullYear()
     };
-
-  }
-
-//  function para obtener el domingo como primer dia de la semana
-getSunday(){
-  var date = new Date();
-  var first = date.getDate() - date.getDay();
-  var monday = new Date(date.setDate(first));
-  return (formatDate(monday.toString().split(" ", 4)));
-
 }
 
 //funcion sabado como ultimo dia de la semana
