@@ -5,7 +5,7 @@ Este proyecto fue creado con el fin de mostrar de una manera mas dinámica la in
 
 ### Prerequisitos
 
-- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos) . Aquí encontrará informacián de como ejecutar los scripts que generan los datos y el bot de twitter.
+- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos) . Aquí encontrará información de como ejecutar los scripts que generan los datos y el bot de twitter.
 
 - Debe tener en funcionamiento el API del proyecto ColumnistOS que encontrará en [https://github.com/samsaurio/ConsultasAPI](https://github.com/samsaurio/ConsultasAPI). 
 
