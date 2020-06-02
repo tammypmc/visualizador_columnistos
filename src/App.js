@@ -40,6 +40,14 @@ class App extends Component {
     };
 }
 
+//  function para obtener el domingo como primer dia de la semana
+getSunday(){
+  var date = new Date();
+  var first = date.getDate() - date.getDay();
+  var monday = new Date(date.setDate(first));
+  return (formatDate(monday.toString().split(" ", 4)));
+
+}
 //funcion sabado como ultimo dia de la semana
 getSaturday(){
   var date = new Date();
