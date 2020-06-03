@@ -1,0 +1,4 @@
+docker-compose.yml
+docker.en*
+Dockerfile
+node_modules/*
