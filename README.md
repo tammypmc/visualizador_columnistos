@@ -32,7 +32,11 @@ Para adaptar este proyecto a otro país será necesario editar el archivo .env m
   - Ejemplo : ```REACT_APP_COUNTRY = https://apicolumnistos.tedic.net/```
 
 
-#### Ejecutar el sitio web de manera local.
-
+#### Ejecutar el sitio web en modo desarrollo.
+El sitio web corre en el puerto 3000.
 ```npm start```
+
+#### Compilación del sitio web para producción.
+
+```npm run build```
 
