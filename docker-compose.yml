@@ -1,0 +1,14 @@
+version: '2.4'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: serve -s build
+    entrypoint: /docker-entrypoint.sh
+    ports:
+      - "127.0.0.1:8098:5000"
+    volumes:
+      - ./node_modules:/usr/src/app/node_modules
+      - /etc/localtime:/etc/localtime:ro
