@@ -33,8 +33,10 @@ Para adaptar este proyecto a otro país será necesario editar el archivo .env m
 
 
 #### Ejecutar el sitio web en modo desarrollo.
-El sitio web corre en el puerto 3000.
+
 ```npm start```
+
+El sitio web corre en el puerto 3000
 
 #### Compilación del sitio web para producción.
 
