@@ -5,18 +5,10 @@ Este proyecto fue creado con el fin de mostrar de una manera mas dinámica la in
 
 ### Prerequisitos
 
-- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos) . Aquí encontrará informacián de como ejecutar los scripts que generan los datos y el bot de twitter.
+- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos). Aquí encontrará informacián de como ejecutar: 1. los scripts que generan los datos, 2. el bot de twitter y 3. la API.
 
-- Debe tener en funcionamiento el API del proyecto Columnistos que encontrará en [https://github.com/samsaurio/ConsultasAPI](https://github.com/samsaurio/ConsultasAPI). 
+### Instalación  - variables
 
-
-### Instalación
-
-#### Instalación de requerimientos.
-
-```npm install```
-
-#### Variables de configuración.
 Para adaptar este proyecto a otro país será necesario editar el archivo .env modificando las siguientes variables:
 
 - ```REACT_APP_COUNTRY```: Nombre de país con la inicial en mayúscula.
@@ -31,6 +23,11 @@ Para adaptar este proyecto a otro país será necesario editar el archivo .env m
 - ```REACT_APP_API_URL```: Url del API correspondiente al país. 
   - Ejemplo : ```REACT_APP_COUNTRY = https://apicolumnistos.tedic.net/```
 
+Hay dos formas de instalar:
+
+### Instalación con npm
+
+```npm install```
 
 #### Ejecutar el sitio web en modo desarrollo.
 
@@ -42,3 +39,8 @@ El sitio web corre en el puerto 3000
 
 ```npm run build```
 
+### Instalación con docker
+
+Revisar la configuración de red de docker-compose.yml y luego correr:
+
+```docker-compose up -d```
