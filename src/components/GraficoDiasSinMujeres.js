@@ -127,7 +127,7 @@ class GraficoDiasSinMujeres extends Component {
     for (var i = 0; i < listaEnlaces.length; i++) {
       httpRequest.open('GET', listaEnlaces[i], false);
       httpRequest.send();
-      var cons = JSON.parse(httpRequest.response);
+      cons = JSON.parse(httpRequest.response);
       dias.push(cons.data[0].dias_sin_mujeres);
     }
 

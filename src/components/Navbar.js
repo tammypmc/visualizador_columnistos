@@ -61,12 +61,12 @@ parametro: anio seleccionado del calendario */
         <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div className="collapse navbar-collapse pr-5  " id="navbarSupportedContent">
+      <div className="collapse navbar-collapse  " id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="nav-link dropdown-toggle btn mt-2 " id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Fecha
-            </a>
+            </button>
             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <form id="formLogin">
                   <DropdownDates obtenerFecha={this.handleDate} obtenerAnio={this.handleYear} listaAnios={this.props.listaAnios}/>
