@@ -166,7 +166,8 @@ class GraficoBarraSemana extends Component {
               case "Sabado":
                 datos[x].dia = 6
                 break;
-
+              default:
+                
             }
           }
           //lista que se utilizara para ordenar los dias de la semana
