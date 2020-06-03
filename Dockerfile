@@ -13,4 +13,3 @@ WORKDIR /usr/src/app
 ADD . .
 
 COPY docker-entrypoint.sh /
-

@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: serve -s build
+    command: ./node_modules/serve/bin/serve.js -s build
     entrypoint: /docker-entrypoint.sh
     ports:
       - "127.0.0.1:8098:5000"
