@@ -5,7 +5,10 @@ Este proyecto fue creado con el fin de mostrar de una manera mas dinámica la in
 
 ### Prerequisitos
 
-- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos). Aquí encontrará informacián de como ejecutar: 1. los scripts que generan los datos, 2. el bot de twitter y 3. la API.
+- Debe tener su propia instancia del proyecto Columnistos, para esto diríjase al siguiente repositorio: [https://github.com/columnistos/columnistos](https://github.com/columnistos/columnistos). Aquí encontrará información de como ejecutar:  
+1. Los scripts que generan los datos.  
+2. El bot de twitter.  
+3. El API.  
 
 ### Instalación  - variables
 
