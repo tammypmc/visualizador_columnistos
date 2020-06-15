@@ -24,7 +24,7 @@ Para adaptar este proyecto a otro país será necesario editar el archivo .env m
   - Ejemplo : ```REACT_APP_MEDIOS_BD_NAMES = abc,lanacionpy,ultimahora```
   
 - ```REACT_APP_API_URL```: Url del API correspondiente al país. 
-  - Ejemplo : ```REACT_APP_COUNTRY = https://apicolumnistos.tedic.net/```
+  - Ejemplo : ```REACT_APP_API_URL = https://apicolumnistos.tedic.net/```
 
 Hay dos formas de instalar:
 
